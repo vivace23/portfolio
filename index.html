@@ -1,0 +1,1967 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio — Full-Stack & Mobile Engineer</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            :root {
+                --ink: #0d0d0d;
+                --paper: #faf9f7;
+                --paper2: #f3f1ed;
+                --muted: #8a8680;
+                --rule: #e2dfd9;
+                --accent: #c8471b;
+                --accent-light: #fdf0eb;
+                --serif: "DM Serif Display", serif;
+                --sans: "Instrument Sans", sans-serif;
+                --code: "JetBrains Mono", monospace;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: var(--sans);
+                background: var(--paper);
+                color: var(--ink);
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+            #prog {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 2px;
+                background: var(--accent);
+                z-index: 200;
+                width: 0;
+                transition: width 0.1s linear;
+            }
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1.1rem 4rem;
+                background: rgba(250, 249, 247, 0.93);
+                backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--rule);
+            }
+            .nav-mark {
+                font-family: var(--serif);
+                font-size: 1.25rem;
+                letter-spacing: -0.02em;
+            }
+            .nav-mark em {
+                color: var(--accent);
+                font-style: normal;
+            }
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+                list-style: none;
+            }
+            .nav-links a {
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.09em;
+                text-transform: uppercase;
+                color: var(--muted);
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .nav-links a:hover {
+                color: var(--ink);
+            }
+            .nav-cta {
+                font-size: 0.75rem;
+                font-weight: 600;
+                letter-spacing: 0.07em;
+                text-transform: uppercase;
+                padding: 0.55rem 1.3rem;
+                background: var(--ink);
+                color: var(--paper);
+                text-decoration: none;
+                border-radius: 2px;
+                transition: background 0.2s;
+            }
+            .nav-cta:hover {
+                background: var(--accent);
+            }
+
+            /* HERO */
+            .hero {
+                min-height: 100vh;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 10rem 4rem 5rem;
+                gap: 5rem;
+                align-items: center;
+                border-bottom: 1px solid var(--rule);
+            }
+            .h-label {
+                font-family: var(--code);
+                font-size: 0.7rem;
+                color: var(--accent);
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+                margin-bottom: 1.5rem;
+            }
+            .h-label::before {
+                content: "";
+                display: inline-block;
+                width: 18px;
+                height: 1px;
+                background: var(--accent);
+            }
+            .h-name {
+                font-family: var(--serif);
+                font-size: clamp(3.5rem, 6vw, 5.5rem);
+                line-height: 0.93;
+                letter-spacing: -0.03em;
+                margin-bottom: 1.5rem;
+            }
+            .h-name .last {
+                display: block;
+                color: var(--accent);
+            }
+            .h-role {
+                font-size: 1rem;
+                color: var(--muted);
+                max-width: 420px;
+                line-height: 1.75;
+                margin-bottom: 2.5rem;
+            }
+            .h-role strong {
+                color: var(--ink);
+                font-weight: 600;
+            }
+            .h-actions {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+            }
+            .btn-solid {
+                display: inline-block;
+                padding: 0.8rem 2rem;
+                background: var(--ink);
+                color: var(--paper);
+                font-weight: 600;
+                font-size: 0.85rem;
+                letter-spacing: 0.04em;
+                text-decoration: none;
+                border-radius: 2px;
+                transition: background 0.2s;
+            }
+            .btn-solid:hover {
+                background: var(--accent);
+            }
+            .btn-ghost {
+                font-size: 0.85rem;
+                font-weight: 500;
+                color: var(--muted);
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                transition: color 0.2s;
+            }
+            .btn-ghost:hover {
+                color: var(--ink);
+            }
+            .h-right {
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            .h-card {
+                background: var(--paper2);
+                border: 1px solid var(--rule);
+                border-radius: 4px;
+                padding: 1.5rem;
+            }
+            .h-card-label {
+                font-family: var(--code);
+                font-size: 0.63rem;
+                color: var(--muted);
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 0.5rem;
+            }
+            .h-card-val {
+                font-family: var(--serif);
+                font-size: 1.45rem;
+                letter-spacing: -0.02em;
+            }
+            .h-card-sub {
+                font-size: 0.8rem;
+                color: var(--muted);
+                margin-top: 0.2rem;
+            }
+            .h-stats {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.9rem;
+            }
+            .stat {
+                background: var(--paper2);
+                border: 1px solid var(--rule);
+                border-radius: 4px;
+                padding: 1.1rem;
+            }
+            .stat-n {
+                font-family: var(--serif);
+                font-size: 2rem;
+                letter-spacing: -0.04em;
+                line-height: 1;
+            }
+            .stat-n sup {
+                font-size: 0.9rem;
+                color: var(--accent);
+            }
+            .stat-l {
+                font-size: 0.73rem;
+                color: var(--muted);
+                margin-top: 0.25rem;
+            }
+            .h-loc {
+                font-family: var(--code);
+                font-size: 0.68rem;
+                color: var(--muted);
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                padding: 0.9rem 1.2rem;
+                background: var(--paper2);
+                border: 1px solid var(--rule);
+                border-radius: 4px;
+            }
+            .dot {
+                display: inline-block;
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: #22c55e;
+                flex-shrink: 0;
+                box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+            }
+
+            /* SECTIONS */
+            .section {
+                padding: 6rem 4rem;
+                border-bottom: 1px solid var(--rule);
+            }
+            .si {
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+            .s-label {
+                font-family: var(--code);
+                font-size: 0.66rem;
+                color: var(--accent);
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+                margin-bottom: 1rem;
+            }
+            .s-label::before {
+                content: "";
+                display: inline-block;
+                width: 14px;
+                height: 1px;
+                background: var(--accent);
+            }
+            .s-heading {
+                font-family: var(--serif);
+                font-size: clamp(2.2rem, 4vw, 3.2rem);
+                letter-spacing: -0.03em;
+                line-height: 1.05;
+                margin-bottom: 3rem;
+            }
+
+            /* ABOUT */
+            .about-g {
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 5rem;
+                align-items: start;
+            }
+            .a-body p {
+                font-size: 0.98rem;
+                color: var(--muted);
+                line-height: 1.85;
+                margin-bottom: 1.1rem;
+            }
+            .a-body p strong {
+                color: var(--ink);
+                font-weight: 600;
+            }
+            .a-aside {
+                display: flex;
+                flex-direction: column;
+            }
+            .a-row {
+                display: flex;
+                gap: 1rem;
+                padding: 1rem 0;
+                border-top: 1px solid var(--rule);
+            }
+            .a-row:last-child {
+                border-bottom: 1px solid var(--rule);
+            }
+            .a-key {
+                font-family: var(--code);
+                font-size: 0.62rem;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--muted);
+                white-space: nowrap;
+                margin-top: 0.15rem;
+                width: 78px;
+                flex-shrink: 0;
+            }
+            .a-val {
+                font-size: 0.88rem;
+                color: var(--ink);
+                font-weight: 500;
+                line-height: 1.4;
+            }
+            .a-val small {
+                display: block;
+                color: var(--muted);
+                font-weight: 400;
+                font-size: 0.78rem;
+                margin-top: 0.1rem;
+            }
+
+            /* SKILLS */
+            .skills-bg {
+                background: var(--ink);
+                padding: 6rem 4rem;
+                border-bottom: 1px solid #1a1915;
+            }
+            .skills-bg .s-label {
+                color: var(--accent);
+            }
+            .skills-bg .s-label::before {
+                background: var(--accent);
+            }
+            .skills-bg .s-heading {
+                color: var(--paper);
+            }
+            .sk-g {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1px;
+                background: rgba(255, 255, 255, 0.07);
+                border: 1px solid rgba(255, 255, 255, 0.07);
+            }
+            .sk-b {
+                background: var(--ink);
+                padding: 2rem;
+                transition: background 0.25s;
+            }
+            .sk-b:hover {
+                background: #141410;
+            }
+            .sk-t {
+                font-family: var(--code);
+                font-size: 0.63rem;
+                font-weight: 500;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.35);
+                margin-bottom: 1.2rem;
+            }
+            .sk-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.4rem;
+            }
+            .sk-tag {
+                font-family: var(--code);
+                font-size: 0.7rem;
+                color: rgba(255, 255, 255, 0.65);
+                padding: 0.28rem 0.6rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 2px;
+                transition: all 0.2s;
+                cursor: default;
+            }
+            .sk-tag:hover {
+                border-color: var(--accent);
+                color: #fff;
+            }
+
+            /* PROJECTS */
+            .proj-list {
+                display: flex;
+                flex-direction: column;
+            }
+            .proj-row {
+                display: grid;
+                grid-template-columns: 3rem 1fr auto;
+                gap: 2rem;
+                align-items: start;
+                padding: 2.5rem 0;
+                border-top: 1px solid var(--rule);
+                cursor: default;
+                transition: all 0.2s;
+                border-radius: 2px;
+            }
+            .proj-row:last-child {
+                border-bottom: 1px solid var(--rule);
+            }
+            .proj-row:hover {
+                background: var(--accent-light);
+                margin: 0 -2rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            .proj-num {
+                font-family: var(--code);
+                font-size: 0.66rem;
+                color: var(--muted);
+                padding-top: 0.35rem;
+                letter-spacing: 0.06em;
+            }
+            .proj-title {
+                font-family: var(--serif);
+                font-size: 1.55rem;
+                letter-spacing: -0.02em;
+                margin-bottom: 0.4rem;
+                line-height: 1.1;
+            }
+            .proj-desc {
+                font-size: 0.88rem;
+                color: var(--muted);
+                line-height: 1.7;
+                max-width: 640px;
+                margin-bottom: 0.9rem;
+            }
+            .proj-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.3rem;
+            }
+            .pt {
+                font-family: var(--code);
+                font-size: 0.63rem;
+                color: var(--accent);
+                border: 1px solid rgba(200, 71, 27, 0.3);
+                border-radius: 2px;
+                padding: 0.18rem 0.52rem;
+            }
+            .proj-type {
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--muted);
+                white-space: nowrap;
+                padding-top: 0.35rem;
+            }
+            .wip {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                font-family: var(--code);
+                font-size: 0.62rem;
+                color: #16a34a;
+                background: #f0fdf4;
+                border: 1px solid #bbf7d0;
+                padding: 0.18rem 0.55rem;
+                border-radius: 2px;
+                margin-top: 0.7rem;
+            }
+            .wip-dot {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: #16a34a;
+                animation: bl 1.5s ease-in-out infinite;
+            }
+            @keyframes bl {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.25;
+                }
+            }
+
+            /* MODAL */
+            .modal-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                z-index: 500;
+                background: rgba(13, 13, 13, 0.85);
+                backdrop-filter: blur(8px);
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+            }
+            .modal-overlay.open {
+                display: flex;
+            }
+            .modal {
+                background: var(--paper);
+                width: 100%;
+                max-width: 900px;
+                max-height: 90vh;
+                border-radius: 4px;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                animation: mIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            @keyframes mIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.97);
+                }
+                to {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+            .modal-gallery {
+                position: relative;
+                height: 360px;
+                background: var(--paper2);
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+            .modal-img {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+            .modal-img.active {
+                opacity: 1;
+            }
+            .modal-img-placeholder {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 0.5rem;
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+            .modal-img-placeholder.active {
+                opacity: 1;
+            }
+            .modal-img-placeholder .ph-icon {
+                font-size: 2.5rem;
+                opacity: 0.25;
+            }
+            .modal-img-placeholder .ph-label {
+                font-family: var(--code);
+                font-size: 0.65rem;
+                color: var(--muted);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+            .gallery-nav {
+                position: absolute;
+                bottom: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 0.4rem;
+                z-index: 2;
+            }
+            .g-dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                transition: background 0.2s;
+            }
+            .g-dot.active {
+                background: #fff;
+            }
+            .g-prev,
+            .g-next {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(13, 13, 13, 0.55);
+                border: none;
+                color: #fff;
+                width: 36px;
+                height: 36px;
+                border-radius: 2px;
+                cursor: pointer;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.2s;
+                z-index: 2;
+            }
+            .g-prev {
+                left: 1rem;
+            }
+            .g-next {
+                right: 1rem;
+            }
+            .g-prev:hover,
+            .g-next:hover {
+                background: var(--accent);
+            }
+            .modal-body {
+                overflow-y: auto;
+                padding: 2.5rem;
+                flex: 1;
+            }
+            .modal-header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                margin-bottom: 1.5rem;
+            }
+            .modal-num {
+                font-family: var(--code);
+                font-size: 0.65rem;
+                color: var(--accent);
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                margin-bottom: 0.4rem;
+            }
+            .modal-title {
+                font-family: var(--serif);
+                font-size: 2rem;
+                letter-spacing: -0.03em;
+                line-height: 1.05;
+            }
+            .modal-close {
+                width: 36px;
+                height: 36px;
+                background: var(--paper2);
+                border: 1px solid var(--rule);
+                border-radius: 2px;
+                cursor: pointer;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                transition: all 0.2s;
+                margin-left: 1rem;
+                margin-top: 0.2rem;
+            }
+            .modal-close:hover {
+                background: var(--ink);
+                color: var(--paper);
+                border-color: var(--ink);
+            }
+            .modal-meta {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin-bottom: 1.5rem;
+            }
+            .modal-tag {
+                font-family: var(--code);
+                font-size: 0.65rem;
+                color: var(--accent);
+                border: 1px solid rgba(200, 71, 27, 0.3);
+                border-radius: 2px;
+                padding: 0.22rem 0.55rem;
+            }
+            .modal-type-badge {
+                font-family: var(--code);
+                font-size: 0.65rem;
+                background: var(--paper2);
+                color: var(--muted);
+                border: 1px solid var(--rule);
+                border-radius: 2px;
+                padding: 0.22rem 0.55rem;
+            }
+            .modal-divider {
+                height: 1px;
+                background: var(--rule);
+                margin: 1.5rem 0;
+            }
+            .modal-section-label {
+                font-family: var(--code);
+                font-size: 0.62rem;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.7rem;
+            }
+            .modal-desc {
+                font-size: 0.92rem;
+                color: var(--muted);
+                line-height: 1.8;
+                margin-bottom: 1.5rem;
+            }
+            .modal-desc strong {
+                color: var(--ink);
+                font-weight: 600;
+            }
+            .modal-features {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .modal-feature {
+                display: flex;
+                gap: 0.8rem;
+                align-items: flex-start;
+                font-size: 0.88rem;
+                color: var(--muted);
+                line-height: 1.5;
+            }
+            .modal-feature::before {
+                content: "—";
+                color: var(--accent);
+                flex-shrink: 0;
+                font-family: var(--code);
+                font-size: 0.75rem;
+                margin-top: 0.05rem;
+            }
+            .modal-status-wip {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-family: var(--code);
+                font-size: 0.65rem;
+                color: #16a34a;
+                background: #f0fdf4;
+                border: 1px solid #bbf7d0;
+                padding: 0.3rem 0.7rem;
+                border-radius: 2px;
+            }
+            .modal-status-wip-dot {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: #16a34a;
+                animation: bl 1.5s ease-in-out infinite;
+            }
+
+            /* EDU */
+            .edu-g {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: start;
+            }
+            .edu-main {
+                border-left: 3px solid var(--accent);
+                padding-left: 2rem;
+            }
+            .edu-yr {
+                font-family: var(--code);
+                font-size: 0.67rem;
+                color: var(--accent);
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                margin-bottom: 0.8rem;
+            }
+            .edu-deg {
+                font-family: var(--serif);
+                font-size: 1.9rem;
+                letter-spacing: -0.02em;
+                margin-bottom: 0.4rem;
+                line-height: 1.05;
+            }
+            .edu-school {
+                font-size: 0.9rem;
+                font-weight: 600;
+                margin-bottom: 0.35rem;
+            }
+            .edu-det {
+                font-size: 0.84rem;
+                color: var(--muted);
+                line-height: 1.65;
+            }
+            .edu-tags {
+                display: flex;
+                gap: 0.45rem;
+                flex-wrap: wrap;
+                margin-top: 1.2rem;
+            }
+            .e-tag {
+                font-family: var(--code);
+                font-size: 0.65rem;
+                background: var(--accent-light);
+                color: var(--accent);
+                border: 1px solid rgba(200, 71, 27, 0.18);
+                padding: 0.28rem 0.65rem;
+                border-radius: 2px;
+            }
+            .edu-side {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .box {
+                background: var(--paper2);
+                border: 1px solid var(--rule);
+                border-radius: 2px;
+                padding: 1.7rem;
+            }
+            .box-accent {
+                border-top: 3px solid var(--ink);
+            }
+            .box h4 {
+                font-family: var(--serif);
+                font-size: 1.15rem;
+                letter-spacing: -0.02em;
+                margin-bottom: 0.7rem;
+            }
+            .box p {
+                font-size: 0.86rem;
+                color: var(--muted);
+                line-height: 1.7;
+            }
+            .box p strong {
+                color: var(--ink);
+                font-weight: 600;
+            }
+            .box-label {
+                font-family: var(--code);
+                font-size: 0.64rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 0.9rem;
+            }
+            .lang-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid var(--rule);
+            }
+            .lang-row:last-child {
+                border: none;
+            }
+            .lang-n {
+                font-size: 0.86rem;
+                font-weight: 500;
+            }
+            .lang-l {
+                font-family: var(--code);
+                font-size: 0.67rem;
+                color: var(--muted);
+            }
+
+            /* CONTACT */
+            .contact-bg {
+                background: var(--ink);
+                padding: 6rem 4rem;
+            }
+            .c-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6rem;
+                align-items: center;
+            }
+            .c-hed {
+                font-family: var(--serif);
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                letter-spacing: -0.03em;
+                line-height: 1;
+                color: var(--paper);
+                margin-bottom: 1.2rem;
+            }
+            .c-hed em {
+                color: var(--accent);
+                font-style: normal;
+            }
+            .c-sub {
+                font-size: 0.92rem;
+                color: rgba(250, 249, 247, 0.45);
+                line-height: 1.75;
+            }
+            .c-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.65rem;
+            }
+            .c-lnk {
+                display: flex;
+                align-items: center;
+                gap: 1.2rem;
+                padding: 1.1rem 1.4rem;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 2px;
+                text-decoration: none;
+                transition: all 0.22s;
+            }
+            .c-lnk:hover {
+                background: rgba(255, 255, 255, 0.05);
+                border-color: rgba(255, 255, 255, 0.22);
+                transform: translateX(6px);
+            }
+            .c-icon {
+                font-family: var(--code);
+                font-size: 0.8rem;
+                color: var(--accent);
+                width: 1.5rem;
+                text-align: center;
+                font-weight: 500;
+            }
+            .c-key {
+                font-family: var(--code);
+                font-size: 0.6rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(250, 249, 247, 0.3);
+                margin-bottom: 0.14rem;
+            }
+            .c-val {
+                font-size: 0.88rem;
+                color: var(--paper);
+                font-weight: 500;
+            }
+            .c-arr {
+                margin-left: auto;
+                color: rgba(250, 249, 247, 0.25);
+                transition: all 0.22s;
+                font-size: 0.85rem;
+            }
+            .c-lnk:hover .c-arr {
+                color: var(--accent);
+                transform: translateX(3px);
+            }
+
+            footer {
+                background: var(--ink);
+                padding: 1.8rem 4rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .f-mark {
+                font-family: var(--serif);
+                font-size: 0.95rem;
+                color: rgba(250, 249, 247, 0.3);
+            }
+            .f-mark em {
+                color: var(--accent);
+                font-style: normal;
+            }
+            .f-note {
+                font-family: var(--code);
+                font-size: 0.62rem;
+                color: rgba(250, 249, 247, 0.2);
+                letter-spacing: 0.08em;
+            }
+
+            /* REVEAL */
+            .rv {
+                opacity: 0;
+                transform: translateY(22px);
+                transition:
+                    opacity 0.65s,
+                    transform 0.65s;
+            }
+            .rv.in {
+                opacity: 1;
+                transform: none;
+            }
+            .d1 {
+                transition-delay: 0.1s;
+            }
+            .d2 {
+                transition-delay: 0.2s;
+            }
+            .d3 {
+                transition-delay: 0.3s;
+            }
+            .d4 {
+                transition-delay: 0.4s;
+            }
+
+            @media (max-width: 920px) {
+                nav {
+                    padding: 1rem 1.5rem;
+                }
+                .nav-links,
+                .nav-cta {
+                    display: none;
+                }
+                .hero {
+                    grid-template-columns: 1fr;
+                    padding: 7rem 1.5rem 3.5rem;
+                    min-height: auto;
+                    gap: 2.5rem;
+                }
+                .section,
+                .skills-bg,
+                .contact-bg {
+                    padding: 4rem 1.5rem;
+                }
+                .about-g {
+                    grid-template-columns: 1fr;
+                    gap: 2.5rem;
+                }
+                .sk-g {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .proj-row {
+                    grid-template-columns: 2.5rem 1fr;
+                    gap: 1.2rem;
+                    padding: 2rem 0;
+                }
+                .proj-type {
+                    display: none;
+                }
+                .proj-row:hover {
+                    margin: 0 -1.5rem;
+                    padding-left: 1.5rem;
+                    padding-right: 1.5rem;
+                }
+                .edu-g {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
+                .c-inner {
+                    grid-template-columns: 1fr;
+                    gap: 2.5rem;
+                }
+                footer {
+                    flex-direction: column;
+                    gap: 0.7rem;
+                    text-align: center;
+                    padding: 1.5rem;
+                }
+            }
+            @media (max-width: 600px) {
+                .sk-g {
+                    grid-template-columns: 1fr;
+                }
+                .h-stats {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="prog"></div>
+
+        <nav>
+            <div class="nav-mark">dev<em>.</em></div>
+            <ul class="nav-links">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Stack</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#formation">Formation</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+
+        <!-- HERO -->
+        <div class="hero">
+            <div>
+                <div class="h-label rv">
+                    Développeur Full-Stack &amp; Mobile
+                </div>
+                <h1 class="h-name rv d1">
+                    [Ton Prénom]
+                    <span class="last">[Ton Nom]</span>
+                </h1>
+                <p class="h-role rv d2">
+                    Je conçois des systèmes
+                    <strong>performants et scalables</strong> — des
+                    architectures microservices et Big Data aux applications
+                    mobiles iOS/Android. Passionné par l'ingénierie logicielle
+                    de fond et l'électronique embarquée.
+                </p>
+                <div class="h-actions rv d3">
+                    <a href="#projects" class="btn-solid">Voir mes projets</a>
+                    <a href="#contact" class="btn-ghost">Me contacter →</a>
+                </div>
+            </div>
+            <div class="h-right">
+                <div class="h-card rv d1">
+                    <div class="h-card-label">Formation actuelle</div>
+                    <div class="h-card-val">Master 1 MBDS</div>
+                    <div class="h-card-sub">
+                        ESATIC · Université Côte d'Azur — Abidjan, CI
+                    </div>
+                </div>
+                <div class="h-stats rv d2">
+                    <div class="stat">
+                        <div class="stat-n">6<sup>+</sup></div>
+                        <div class="stat-l">Projets livrés</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-n">10<sup>+</sup></div>
+                        <div class="stat-l">Technos maîtrisées</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-n">Go</div>
+                        <div class="stat-l">Langage principal</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-n">M2</div>
+                        <div class="stat-l">Objectif France</div>
+                    </div>
+                </div>
+                <div class="h-loc rv d3">
+                    <span class="dot"></span>
+                    Disponible — Abidjan, CI · Mobile à l'international
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="si">
+                <div class="s-label rv">01 — À propos</div>
+                <h2 class="s-heading rv d1">Qui suis-je ?</h2>
+                <div class="about-g">
+                    <div class="a-body rv d2">
+                        <p>
+                            Je suis un développeur passionné par l'<strong
+                                >ingénierie logicielle de fond</strong
+                            >
+                            — concevoir des systèmes qui tiennent à l'échelle,
+                            pas juste du code qui tourne. Basé à Abidjan, je
+                            travaille sur des projets allant des plateformes web
+                            aux applications mobiles iOS et Android, en passant
+                            par des architectures distribuées orientées
+                            microservices.
+                        </p>
+                        <p>
+                            Actuellement en
+                            <strong>Master 1 MBDS</strong> (Mobiquité, Bases de
+                            Données &amp; intégration de Systèmes) à l'ESATIC,
+                            en double partenariat avec l'<strong
+                                >Université Côte d'Azur</strong
+                            >. Une formation rigoureuse qui allie systèmes
+                            distribués, Big Data et mobilité applicative.
+                        </p>
+                        <p>
+                            Au-delà du code, je m'intéresse profondément à
+                            l'<strong>électronique embarquée</strong> — montage
+                            de drones, modification de firmware de contrôleurs
+                            de vol, conception de circuits imprimés (PCB) à
+                            partir de prototypes. J'aime comprendre les systèmes
+                            jusqu'au niveau hardware.
+                        </p>
+                        <p>
+                            Mon ambition : poursuivre en
+                            <strong>Master 2 en France</strong>, continuer à
+                            construire des projets à impact réel et contribuer à
+                            l'écosystème tech africain et international.
+                        </p>
+                    </div>
+                    <div class="a-aside rv d3">
+                        <div class="a-row">
+                            <span class="a-key">Basé à</span>
+                            <span class="a-val"
+                                >Abidjan, Côte d'Ivoire<small
+                                    >Mobile à l'international</small
+                                ></span
+                            >
+                        </div>
+                        <div class="a-row">
+                            <span class="a-key">Formation</span>
+                            <span class="a-val"
+                                >M1 MBDS — ESATIC<small
+                                    >× Université Côte d'Azur</small
+                                ></span
+                            >
+                        </div>
+                        <div class="a-row">
+                            <span class="a-key">Dispo</span>
+                            <span class="a-val"
+                                >Stage · Freelance · CDI<small
+                                    >Disponible dès maintenant</small
+                                ></span
+                            >
+                        </div>
+                        <div class="a-row">
+                            <span class="a-key">Objectif</span>
+                            <span class="a-val"
+                                >Master 2 en France<small
+                                    >IA · Systèmes Distribués</small
+                                ></span
+                            >
+                        </div>
+                        <div class="a-row">
+                            <span class="a-key">Passions</span>
+                            <span class="a-val"
+                                >Drones · PCB · IA · Embarqué<small
+                                    >Hardware &amp; software</small
+                                ></span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <div class="skills-bg" id="skills">
+            <div class="si">
+                <div class="s-label rv">02 — Stack technique</div>
+                <h2 class="s-heading rv d1">Ce que je maîtrise</h2>
+                <div class="sk-g">
+                    <div class="sk-b rv d1">
+                        <div class="sk-t">Langages &amp; Core</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag">JavaScript</span
+                            ><span class="sk-tag">TypeScript</span
+                            ><span class="sk-tag">Go</span>
+                            <span class="sk-tag">Python</span
+                            ><span class="sk-tag">C</span
+                            ><span class="sk-tag">Dart</span
+                            ><span class="sk-tag">Swift</span>
+                        </div>
+                    </div>
+                    <div class="sk-b rv d2">
+                        <div class="sk-t">Backend &amp; Data</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag">Node.js</span
+                            ><span class="sk-tag">Express</span
+                            ><span class="sk-tag">Fastify</span>
+                            <span class="sk-tag">MongoDB</span
+                            ><span class="sk-tag">MySQL</span
+                            ><span class="sk-tag">Redis</span
+                            ><span class="sk-tag">CassandraDB</span>
+                        </div>
+                    </div>
+                    <div class="sk-b rv d3">
+                        <div class="sk-t">Frontend &amp; Mobile</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag">Vue.js</span
+                            ><span class="sk-tag">SvelteKit</span>
+                            <span class="sk-tag">Flutter</span
+                            ><span class="sk-tag">SwiftUI</span>
+                        </div>
+                    </div>
+                    <div class="sk-b rv d1">
+                        <div class="sk-t">DevOps &amp; Big Data</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag">Docker</span
+                            ><span class="sk-tag">Microservices</span>
+                            <span class="sk-tag">Kafka</span
+                            ><span class="sk-tag">Hadoop</span
+                            ><span class="sk-tag">Spark</span
+                            ><span class="sk-tag">AWS S3</span>
+                        </div>
+                    </div>
+                    <div class="sk-b rv d2">
+                        <div class="sk-t">IA &amp; Embarqué</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag">Machine Learning</span
+                            ><span class="sk-tag">Computer Vision</span>
+                            <span class="sk-tag">Firmware</span
+                            ><span class="sk-tag">PCB Design</span
+                            ><span class="sk-tag">Drones</span>
+                        </div>
+                    </div>
+                    <div class="sk-b rv d3">
+                        <div class="sk-t">Outils &amp; Méthodes</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag">Git</span
+                            ><span class="sk-tag">REST API</span>
+                            <span class="sk-tag">WebSockets</span
+                            ><span class="sk-tag">Arch. distribuée</span
+                            ><span class="sk-tag">Agile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+            <div class="si">
+                <div class="s-label rv">03 — Projets</div>
+                <h2 class="s-heading rv d1">Ce que j'ai construit</h2>
+                <div class="proj-list">
+                    <div
+                        class="proj-row rv"
+                        style="cursor: pointer"
+                        onclick="openModal(0)"
+                    >
+                        <div class="proj-num">01</div>
+                        <div>
+                            <div class="proj-title">Oula — Réseau social</div>
+                            <p class="proj-desc">
+                                Architecture microservices conçue pour une forte
+                                montée en charge. Traitement asynchrone des
+                                événements via Kafka, stockage objet S3,
+                                containerisation Docker. Go pour les services
+                                critiques, Node.js pour les services métier.
+                            </p>
+                            <div class="proj-tags">
+                                <span class="pt">Go</span
+                                ><span class="pt">Node.js</span
+                                ><span class="pt">Kafka</span
+                                ><span class="pt">AWS S3</span
+                                ><span class="pt">Docker</span
+                                ><span class="pt">Microservices</span>
+                            </div>
+                        </div>
+                        <div class="proj-type">Réseau social ↗</div>
+                    </div>
+
+                    <div
+                        class="proj-row rv"
+                        style="cursor: pointer"
+                        onclick="openModal(1)"
+                    >
+                        <div class="proj-num">02</div>
+                        <div>
+                            <div class="proj-title">
+                                Gestion de trafic intelligent
+                            </div>
+                            <p class="proj-desc">
+                                Système de régulation du flux de trafic assisté
+                                par l'IA pour l'axe Agban-Gesco à Abidjan.
+                                Analyse en temps réel des flux de circulation,
+                                optimisation des feux tricolores et modélisation
+                                3D du système.
+                            </p>
+                            <div class="proj-tags">
+                                <span class="pt">IA</span
+                                ><span class="pt">Computer Vision</span
+                                ><span class="pt">Modélisation 3D</span>
+                            </div>
+                        </div>
+                        <div class="proj-type">Smart City ↗</div>
+                    </div>
+
+                    <div
+                        class="proj-row rv"
+                        style="cursor: pointer"
+                        onclick="openModal(2)"
+                    >
+                        <div class="proj-num">03</div>
+                        <div>
+                            <div class="proj-title">Vente Loto Bonheur</div>
+                            <p class="proj-desc">
+                                Plateforme web B2B pour le suivi en temps réel
+                                des ventes de machines de loterie. Back-office
+                                complet avec tableaux de bord analytiques pour
+                                vendeurs et administrateurs.
+                            </p>
+                            <div class="proj-tags">
+                                <span class="pt">Web</span
+                                ><span class="pt">Real-time</span
+                                ><span class="pt">Back-office</span
+                                ><span class="pt">Analytics</span>
+                            </div>
+                        </div>
+                        <div class="proj-type">B2B Platform ↗</div>
+                    </div>
+
+                    <div
+                        class="proj-row rv"
+                        style="cursor: pointer"
+                        onclick="openModal(3)"
+                    >
+                        <div class="proj-num">04</div>
+                        <div>
+                            <div class="proj-title">
+                                Dashboard flotte de taxis
+                            </div>
+                            <p class="proj-desc">
+                                Interface de supervision et logique serveur
+                                sur-mesure pour le tracking GPS et
+                                l'optimisation en temps réel d'une flotte de
+                                véhicules à Abidjan. Reporting et optimisation
+                                des trajets.
+                            </p>
+                            <div class="proj-tags">
+                                <span class="pt">Dashboard</span
+                                ><span class="pt">GPS Tracking</span
+                                ><span class="pt">Real-time</span
+                                ><span class="pt">HTML/CSS</span>
+                            </div>
+                        </div>
+                        <div class="proj-type">Fleet Management ↗</div>
+                    </div>
+
+                    <div
+                        class="proj-row rv"
+                        style="cursor: pointer"
+                        onclick="openModal(4)"
+                    >
+                        <div class="proj-num">05</div>
+                        <div>
+                            <div class="proj-title">Connect Pro</div>
+                            <p class="proj-desc">
+                                Application logicielle innovante axée sur la
+                                connectivité et l'optimisation de l'expérience
+                                utilisateur. Architecture en cours de
+                                définition.
+                            </p>
+                            <div class="proj-tags">
+                                <span class="pt">En cours</span>
+                            </div>
+                            <div class="wip">
+                                <span class="wip-dot"></span> En développement
+                            </div>
+                        </div>
+                        <div class="proj-type">Application ↗</div>
+                    </div>
+
+                    <div
+                        class="proj-row rv"
+                        style="cursor: pointer"
+                        onclick="openModal(5)"
+                    >
+                        <div class="proj-num">06</div>
+                        <div>
+                            <div class="proj-title">
+                                Électronique &amp; Drones
+                            </div>
+                            <p class="proj-desc">
+                                Projets hardware personnels : montage de drones
+                                FPV, modification de firmware de contrôleurs de
+                                vol, conception de circuits imprimés (PCB) à
+                                partir de prototypes. Exploration de
+                                l'intersection logiciel/matériel.
+                            </p>
+                            <div class="proj-tags">
+                                <span class="pt">PCB Design</span
+                                ><span class="pt">Firmware</span
+                                ><span class="pt">Drones</span
+                                ><span class="pt">Embarqué</span>
+                            </div>
+                        </div>
+                        <div class="proj-type">Hardware ↗</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODAL -->
+        <div
+            class="modal-overlay"
+            id="modalOverlay"
+            onclick="if (event.target === this) closeModal();"
+        >
+            <div class="modal" id="modal">
+                <div class="modal-gallery" id="modalGallery"></div>
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <div>
+                            <div class="modal-num" id="modalNum"></div>
+                            <div class="modal-title" id="modalTitle"></div>
+                        </div>
+                        <button class="modal-close" onclick="closeModal()">
+                            ✕
+                        </button>
+                    </div>
+                    <div class="modal-meta" id="modalMeta"></div>
+                    <div class="modal-divider"></div>
+                    <div class="modal-section-label">Description</div>
+                    <div class="modal-desc" id="modalDesc"></div>
+                    <div class="modal-section-label">Points clés</div>
+                    <div class="modal-features" id="modalFeatures"></div>
+                    <div id="modalStatusBlock"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EDUCATION -->
+        <section class="section" id="formation">
+            <div class="si">
+                <div class="s-label rv">04 — Formation</div>
+                <h2 class="s-heading rv d1">Parcours académique</h2>
+                <div class="edu-g">
+                    <div class="edu-main rv d2">
+                        <div class="edu-yr">2024 — En cours</div>
+                        <div class="edu-deg">Master 1 MBDS</div>
+                        <div class="edu-school">
+                            ESATIC, Abidjan, Côte d'Ivoire
+                        </div>
+                        <p class="edu-det">
+                            Mobiquité, Bases de Données &amp; intégration de
+                            Systèmes<br />En partenariat avec l'<strong
+                                >Université Côte d'Azur</strong
+                            >, Nice, France
+                        </p>
+                        <div class="edu-tags">
+                            <span class="e-tag">Big Data</span
+                            ><span class="e-tag">Systèmes distribués</span>
+                            <span class="e-tag">Mobilité</span
+                            ><span class="e-tag">Architecture Cloud</span>
+                        </div>
+                    </div>
+                    <div class="edu-side rv d3">
+                        <div class="box box-accent">
+                            <h4>Prochain objectif : Master 2 en France</h4>
+                            <p>
+                                Je vise une poursuite d'études en
+                                <strong>Master 2 en France</strong>, en
+                                spécialisation IA, Systèmes Distribués ou
+                                Informatique avancée. Ma formation
+                                franco-ivoirienne est un tremplin idéal pour
+                                cette transition internationale.
+                            </p>
+                        </div>
+                        <div class="box">
+                            <div class="box-label">Langues</div>
+                            <div class="lang-row">
+                                <span class="lang-n">Français</span
+                                ><span class="lang-l">Langue maternelle</span>
+                            </div>
+                            <div class="lang-row">
+                                <span class="lang-n">Anglais</span
+                                ><span class="lang-l">Courant — technique</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <div class="contact-bg" id="contact">
+            <div class="c-inner">
+                <div class="rv">
+                    <div class="s-label" style="color: var(--accent)">
+                        05 — Contact
+                    </div>
+                    <h2 class="c-hed">Travaillons<br /><em>ensemble.</em></h2>
+                    <p class="c-sub">
+                        Disponible pour des missions freelance, des stages en
+                        France ou à l'international, et des opportunités à long
+                        terme. Je réponds sous 24h.
+                    </p>
+                </div>
+                <div class="c-links rv d2">
+                    <a href="mailto:ton.email@example.com" class="c-lnk">
+                        <span class="c-icon">@</span>
+                        <div>
+                            <div class="c-key">Email</div>
+                            <div class="c-val">ton.email@example.com</div>
+                        </div>
+                        <span class="c-arr">→</span>
+                    </a>
+                    <a
+                        href="https://linkedin.com/in/tonprofil"
+                        target="_blank"
+                        class="c-lnk"
+                    >
+                        <span class="c-icon">in</span>
+                        <div>
+                            <div class="c-key">LinkedIn</div>
+                            <div class="c-val">linkedin.com/in/tonprofil</div>
+                        </div>
+                        <span class="c-arr">→</span>
+                    </a>
+                    <a
+                        href="https://github.com/tonpseudo"
+                        target="_blank"
+                        class="c-lnk"
+                    >
+                        <span class="c-icon">{}</span>
+                        <div>
+                            <div class="c-key">GitHub</div>
+                            <div class="c-val">github.com/tonpseudo</div>
+                        </div>
+                        <span class="c-arr">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="f-mark">dev<em>.</em></div>
+            <div class="f-note">Abidjan, Côte d'Ivoire — Mobile worldwide</div>
+        </footer>
+
+        <script>
+            // Scroll progress
+            const prog = document.getElementById("prog");
+            window.addEventListener(
+                "scroll",
+                () => {
+                    const p =
+                        (window.scrollY /
+                            (document.documentElement.scrollHeight -
+                                innerHeight)) *
+                        100;
+                    prog.style.width = p + "%";
+                },
+                { passive: true },
+            );
+
+            // Reveal on scroll
+            const obs = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((e) => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add("in");
+                            obs.unobserve(e.target);
+                        }
+                    });
+                },
+                { threshold: 0.08 },
+            );
+            document.querySelectorAll(".rv").forEach((el) => obs.observe(el));
+
+            // ── PROJECT DATA ──
+            // Photos: using picsum.photos with seeds for consistent placeholder images per project
+            const PROJECTS = [
+                {
+                    num: "01",
+                    title: "Oula — Réseau social",
+                    type: "Réseau social · Architecture Microservices",
+                    tags: [
+                        "Go",
+                        "Node.js",
+                        "Kafka",
+                        "AWS S3",
+                        "Docker",
+                        "Microservices",
+                        "MongoDB",
+                        "Redis",
+                    ],
+                    imgs: [
+                        { seed: 10, label: "Interface d'accueil" },
+                        { seed: 20, label: "Feed utilisateur" },
+                        { seed: 30, label: "Architecture système" },
+                        { seed: 40, label: "Profil utilisateur" },
+                    ],
+                    desc: "Conception et développement complet d'un réseau social pensé pour supporter une <strong>forte montée en charge</strong>. L'objectif était de bâtir une infrastructure capable de gérer des millions d'événements simultanés sans dégradation de performance.",
+                    features: [
+                        "Architecture microservices découplée — chaque service Go ou Node.js est indépendant et déployable séparément",
+                        "Traitement asynchrone des événements via Apache Kafka pour garantir la résilience et la scalabilité",
+                        "Stockage d'objets médias sur AWS S3 avec CDN intégré pour une distribution rapide des assets",
+                        "Containerisation complète via Docker et orchestration des services en environnement distribué",
+                        "Bases de données polyglotes : MongoDB pour les documents, Redis pour le cache et les sessions",
+                    ],
+                    wip: false,
+                },
+                {
+                    num: "02",
+                    title: "Gestion de trafic intelligent",
+                    type: "Smart City · IA & Computer Vision",
+                    tags: [
+                        "Intelligence Artificielle",
+                        "Computer Vision",
+                        "Modélisation 3D",
+                        "Python",
+                        "Analyse temps réel",
+                    ],
+                    imgs: [
+                        { seed: 50, label: "Simulation de l'axe Agban-Gesco" },
+                        { seed: 60, label: "Dashboard de contrôle" },
+                        { seed: 70, label: "Modèle 3D du carrefour" },
+                        { seed: 80, label: "Analyse des flux" },
+                    ],
+                    desc: "Système de régulation intelligente du flux de trafic pour l'<strong>axe Agban-Gesco à Abidjan</strong>. Le projet combine vision par ordinateur, IA et modélisation 3D pour optimiser en temps réel la circulation et réduire les embouteillages sur l'un des axes les plus chargés de la ville.",
+                    features: [
+                        "Détection et classification des véhicules par computer vision en temps réel via caméras fixes",
+                        "Algorithme d'optimisation des cycles de feux basé sur la densité du trafic détectée",
+                        "Modélisation 3D de l'axe routier pour visualisation et présentation du système",
+                        "Tableau de bord de supervision avec métriques clés : densité, temps d'attente, flux/heure",
+                        "Réduction estimée des temps d'attente aux carrefours de 30% en simulation",
+                    ],
+                    wip: false,
+                },
+                {
+                    num: "03",
+                    title: "Vente Loto Bonheur",
+                    type: "B2B Platform · Web",
+                    tags: [
+                        "Web",
+                        "Real-time",
+                        "Back-office",
+                        "Analytics",
+                        "Dashboard",
+                        "Node.js",
+                    ],
+                    imgs: [
+                        { seed: 90, label: "Interface vendeur" },
+                        { seed: 100, label: "Back-office admin" },
+                        { seed: 110, label: "Tableau de bord des ventes" },
+                        { seed: 120, label: "Rapport en temps réel" },
+                    ],
+                    desc: "Plateforme web <strong>B2B complète</strong> pour la gestion et le suivi en temps réel des ventes de machines de loterie Loto Bonheur. Le système relie les vendeurs sur le terrain à un back-office centralisé pour un contrôle total des opérations.",
+                    features: [
+                        "Interface vendeur dédiée avec tableau de bord en temps réel des ventes par machine",
+                        "Back-office administrateur avec gestion des comptes, des terminaux et des revenus",
+                        "Rapports analytiques exportables : ventes horaires, journalières, par région et par vendeur",
+                        "Notifications en temps réel via WebSockets pour alertes de panne ou anomalie machine",
+                        "Authentification sécurisée avec gestion des rôles (admin, superviseur, vendeur)",
+                    ],
+                    wip: false,
+                },
+                {
+                    num: "04",
+                    title: "Dashboard flotte de taxis",
+                    type: "Fleet Management · Real-time",
+                    tags: [
+                        "Dashboard",
+                        "GPS Tracking",
+                        "Real-time",
+                        "HTML/CSS",
+                        "WebSockets",
+                        "Cartographie",
+                    ],
+                    imgs: [
+                        { seed: 130, label: "Carte de suivi flotte" },
+                        { seed: 140, label: "Tableau de bord opérationnel" },
+                        { seed: 150, label: "Détail chauffeur" },
+                        { seed: 160, label: "Rapport de trajets" },
+                    ],
+                    desc: "Interface de supervision complète et logique serveur sur-mesure pour le <strong>suivi GPS en temps réel</strong> d'une flotte de taxis à Abidjan. Le système permet aux opérateurs de suivre, coordonner et optimiser l'ensemble de la flotte depuis un seul écran.",
+                    features: [
+                        "Carte interactive avec position en temps réel de chaque véhicule de la flotte",
+                        "Suivi des statuts : disponible, en course, hors service — mis à jour en continu",
+                        "Historique complet des trajets avec durée, distance, revenus générés par chauffeur",
+                        "Optimisation des affectations : suggestion du taxi le plus proche pour une demande",
+                        "Logique serveur sur-mesure avec API REST et connexions WebSockets persistantes",
+                    ],
+                    wip: false,
+                },
+                {
+                    num: "05",
+                    title: "Connect Pro",
+                    type: "Application · En développement",
+                    tags: ["En cours", "Connectivité", "UX", "Mobile"],
+                    imgs: [
+                        { seed: 170, label: "Concept UI — Accueil" },
+                        { seed: 180, label: "Concept UI — Connexions" },
+                        { seed: 190, label: "Wireframe fonctionnel" },
+                    ],
+                    desc: "Application logicielle innovante axée sur la <strong>connectivité et l'optimisation de l'expérience utilisateur</strong>. Le projet est en phase de conception et de développement actif. Les détails complets seront dévoilés à la sortie.",
+                    features: [
+                        "Concept centré sur la mise en relation et la connectivité entre utilisateurs",
+                        "Architecture pensée pour la performance et la fluidité de l'expérience",
+                        "Design UX/UI en cours de définition avec prototypage itératif",
+                    ],
+                    wip: true,
+                },
+                {
+                    num: "06",
+                    title: "Électronique & Drones",
+                    type: "Hardware · Projets personnels",
+                    tags: [
+                        "PCB Design",
+                        "Firmware",
+                        "Drones FPV",
+                        "Électronique embarquée",
+                        "C",
+                        "Soudure",
+                    ],
+                    imgs: [
+                        { seed: 200, label: "Montage drone FPV" },
+                        { seed: 210, label: "Circuit PCB conçu" },
+                        { seed: 220, label: "Contrôleur de vol modifié" },
+                        { seed: 230, label: "Composants électroniques" },
+                    ],
+                    desc: "Ensemble de projets personnels à l'intersection du <strong>logiciel et du matériel</strong>. Passionné par la compréhension des systèmes jusqu'au niveau électronique, je conçois, soude et programme mes propres équipements.",
+                    features: [
+                        "Montage complet de drones FPV racing : choix des composants, assemblage, calibration",
+                        "Modification et flash de firmware custom sur contrôleurs de vol (Betaflight, INAV)",
+                        "Conception de circuits imprimés (PCB) sous KiCad à partir de schematics maison",
+                        "Prototypage électronique : lecture de datasheets, soudure CMS, tests et debugging",
+                        "Exploration du lien entre firmware embarqué en C et comportement physique des systèmes",
+                    ],
+                    wip: false,
+                },
+            ];
+
+            // ── MODAL LOGIC ──
+            let currentImgIdx = 0;
+            let currentProject = null;
+
+            function buildGallery(imgs) {
+                const g = document.getElementById("modalGallery");
+                g.innerHTML = "";
+
+                // Slides
+                imgs.forEach((img, i) => {
+                    const div = document.createElement("div");
+                    div.className =
+                        "modal-img-placeholder" + (i === 0 ? " active" : "");
+                    // Use picsum with specific dimensions and seed
+                    const el = document.createElement("img");
+                    el.src = `https://picsum.photos/seed/${img.seed}/900/360`;
+                    el.alt = img.label;
+                    el.style.cssText =
+                        "position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s";
+                    el.onload = () => {
+                        if (i === 0) el.style.opacity = "1";
+                    };
+                    div.appendChild(el);
+
+                    // Label overlay
+                    const lbl = document.createElement("div");
+                    lbl.style.cssText =
+                        "position:absolute;bottom:0;left:0;right:0;padding:.6rem 1rem;background:linear-gradient(transparent,rgba(13,13,13,.6));font-family:var(--code);font-size:.62rem;color:rgba(255,255,255,.75);letter-spacing:.08em;text-transform:uppercase";
+                    lbl.textContent = img.label;
+                    div.appendChild(lbl);
+
+                    g.appendChild(div);
+                });
+
+                // Nav arrows
+                if (imgs.length > 1) {
+                    const prev = document.createElement("button");
+                    prev.className = "g-prev";
+                    prev.innerHTML = "←";
+                    prev.onclick = (e) => {
+                        e.stopPropagation();
+                        changeImg(-1);
+                    };
+                    g.appendChild(prev);
+
+                    const next = document.createElement("button");
+                    next.className = "g-next";
+                    next.innerHTML = "→";
+                    next.onclick = (e) => {
+                        e.stopPropagation();
+                        changeImg(1);
+                    };
+                    g.appendChild(next);
+
+                    // Dots
+                    const dots = document.createElement("div");
+                    dots.className = "gallery-nav";
+                    imgs.forEach((_, i) => {
+                        const d = document.createElement("button");
+                        d.className = "g-dot" + (i === 0 ? " active" : "");
+                        d.onclick = (e) => {
+                            e.stopPropagation();
+                            goToImg(i);
+                        };
+                        dots.appendChild(d);
+                    });
+                    g.appendChild(dots);
+                }
+            }
+
+            function changeImg(dir) {
+                const imgs = currentProject.imgs;
+                goToImg((currentImgIdx + dir + imgs.length) % imgs.length);
+            }
+
+            function goToImg(idx) {
+                const g = document.getElementById("modalGallery");
+                const slides = g.querySelectorAll(".modal-img-placeholder");
+                const dots = g.querySelectorAll(".g-dot");
+                const imgs = currentProject.imgs;
+
+                // hide old
+                if (slides[currentImgIdx]) {
+                    const oldImg = slides[currentImgIdx].querySelector("img");
+                    if (oldImg) oldImg.style.opacity = "0";
+                    slides[currentImgIdx].classList.remove("active");
+                    if (dots[currentImgIdx])
+                        dots[currentImgIdx].classList.remove("active");
+                }
+                currentImgIdx = idx;
+                // show new
+                if (slides[currentImgIdx]) {
+                    const newImg = slides[currentImgIdx].querySelector("img");
+                    if (newImg) {
+                        if (newImg.complete) newImg.style.opacity = "1";
+                        else
+                            newImg.onload = () => {
+                                newImg.style.opacity = "1";
+                            };
+                    }
+                    slides[currentImgIdx].classList.add("active");
+                    if (dots[currentImgIdx])
+                        dots[currentImgIdx].classList.add("active");
+                }
+            }
+
+            function openModal(idx) {
+                const p = PROJECTS[idx];
+                currentProject = p;
+                currentImgIdx = 0;
+
+                document.getElementById("modalNum").textContent =
+                    p.num + " — " + p.type;
+                document.getElementById("modalTitle").textContent = p.title;
+
+                // Tags
+                const meta = document.getElementById("modalMeta");
+                meta.innerHTML = p.tags
+                    .map((t) => `<span class="modal-tag">${t}</span>`)
+                    .join("");
+
+                // Description
+                document.getElementById("modalDesc").innerHTML = p.desc;
+
+                // Features
+                const feat = document.getElementById("modalFeatures");
+                feat.innerHTML = p.features
+                    .map((f) => `<div class="modal-feature">${f}</div>`)
+                    .join("");
+
+                // WIP badge
+                const sb = document.getElementById("modalStatusBlock");
+                sb.innerHTML = p.wip
+                    ? `<div class="modal-status-wip"><span class="modal-status-wip-dot"></span> Projet en développement actif</div>`
+                    : "";
+
+                // Gallery
+                buildGallery(p.imgs);
+
+                // Open
+                document.getElementById("modalOverlay").classList.add("open");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeModal() {
+                document
+                    .getElementById("modalOverlay")
+                    .classList.remove("open");
+                document.body.style.overflow = "";
+            }
+
+            // Close on Escape
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeModal();
+            });
+        </script>
+    </body>
+</html>
