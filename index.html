@@ -3,12 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Portfolio — Full-Stack & Mobile Engineer</title>
+        <title>Portfolio — Avy Yane Devy Godehi</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
             href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
             rel="stylesheet"
         />
+        <link rel="icon" type="image/jpeg" href="moi.jpeg" />
+
         <style>
             *,
             *::before,
@@ -49,6 +51,8 @@
                 width: 0;
                 transition: width 0.1s linear;
             }
+
+            /* ── NAV ── */
             nav {
                 position: fixed;
                 top: 0;
@@ -105,7 +109,7 @@
                 background: var(--accent);
             }
 
-            /* HERO */
+            /* ── HERO ── */
             .hero {
                 min-height: 100vh;
                 display: grid;
@@ -133,9 +137,48 @@
                 height: 1px;
                 background: var(--accent);
             }
+            .h-photo-frame {
+                position: relative;
+                width: 130px;
+                height: 130px;
+                flex-shrink: 0;
+                margin-bottom: 1.8rem;
+            }
+            .h-photo-frame::before {
+                content: "";
+                position: absolute;
+                inset: -6px;
+                border: 2px solid var(--accent);
+                border-radius: 4px;
+                opacity: 0.3;
+            }
+            .h-photo-frame::after {
+                content: "";
+                position: absolute;
+                bottom: -8px;
+                right: -8px;
+                width: 100%;
+                height: 100%;
+                background: var(--paper2);
+                border: 1px solid var(--rule);
+                border-radius: 4px;
+                z-index: -1;
+            }
+            .h-photo {
+                width: 130px;
+                height: 130px;
+                object-fit: cover;
+                border-radius: 4px;
+                display: block;
+                filter: grayscale(8%);
+                transition: filter 0.3s;
+            }
+            .h-photo:hover {
+                filter: grayscale(0%);
+            }
             .h-name {
                 font-family: var(--serif);
-                font-size: clamp(3.5rem, 6vw, 5.5rem);
+                font-size: clamp(3rem, 5.5vw, 5rem);
                 line-height: 0.93;
                 letter-spacing: -0.03em;
                 margin-bottom: 1.5rem;
@@ -238,6 +281,10 @@
                 font-size: 0.9rem;
                 color: var(--accent);
             }
+            .stat-n.sm {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
             .stat-l {
                 font-size: 0.73rem;
                 color: var(--muted);
@@ -265,7 +312,7 @@
                 box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
             }
 
-            /* SECTIONS */
+            /* ── SECTIONS ── */
             .section {
                 padding: 6rem 4rem;
                 border-bottom: 1px solid var(--rule);
@@ -300,7 +347,7 @@
                 margin-bottom: 3rem;
             }
 
-            /* ABOUT */
+            /* ── ABOUT ── */
             .about-g {
                 display: grid;
                 grid-template-columns: 1.2fr 1fr;
@@ -320,6 +367,76 @@
             .a-aside {
                 display: flex;
                 flex-direction: column;
+                gap: 1.5rem;
+            }
+            .a-photo-wrap {
+                position: relative;
+            }
+            .a-photo-frame {
+                position: relative;
+                border-radius: 4px;
+                overflow: hidden;
+                aspect-ratio: 4/5;
+                max-width: 100%;
+            }
+            .a-photo-frame::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    to bottom,
+                    transparent 60%,
+                    rgba(13, 13, 13, 0.18)
+                );
+                pointer-events: none;
+            }
+            .a-photo-frame::before {
+                content: "";
+                position: absolute;
+                top: -8px;
+                left: -8px;
+                right: 8px;
+                bottom: 8px;
+                border: 1px solid rgba(200, 71, 27, 0.25);
+                border-radius: 4px;
+                z-index: -1;
+                pointer-events: none;
+            }
+            .a-photo {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                filter: grayscale(10%);
+                transition:
+                    filter 0.35s,
+                    transform 0.35s;
+            }
+            .a-photo-wrap:hover .a-photo {
+                filter: grayscale(0%);
+                transform: scale(1.02);
+            }
+            .a-photo-caption {
+                font-family: var(--code);
+                font-size: 0.6rem;
+                color: var(--muted);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-top: 0.75rem;
+                text-align: right;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 0.5rem;
+            }
+            .a-photo-caption::before {
+                content: "";
+                display: inline-block;
+                width: 18px;
+                height: 1px;
+                background: var(--rule);
+            }
+            .a-rows {
             }
             .a-row {
                 display: flex;
@@ -355,7 +472,7 @@
                 margin-top: 0.1rem;
             }
 
-            /* SKILLS */
+            /* ── SKILLS ── */
             .skills-bg {
                 background: var(--ink);
                 padding: 6rem 4rem;
@@ -369,6 +486,48 @@
             }
             .skills-bg .s-heading {
                 color: var(--paper);
+                margin-bottom: 0.5rem;
+            }
+            .s-sub {
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.28);
+                margin-bottom: 2.5rem;
+            }
+            .sk-group-hd {
+                display: flex;
+                align-items: center;
+                gap: 1.2rem;
+                padding: 1.1rem 1.8rem;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.07);
+                border-bottom: none;
+                margin-top: 2.5rem;
+            }
+            .sk-group-hd:first-of-type {
+                margin-top: 0;
+            }
+            .sk-badge {
+                font-family: var(--code);
+                font-size: 0.58rem;
+                font-weight: 600;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                padding: 0.28rem 0.8rem;
+                border-radius: 2px;
+                white-space: nowrap;
+            }
+            .sk-badge.core {
+                background: var(--accent);
+                color: #fff;
+            }
+            .sk-badge.seen {
+                background: transparent;
+                color: rgba(255, 255, 255, 0.35);
+                border: 1px solid rgba(255, 255, 255, 0.14);
+            }
+            .sk-group-hint {
+                font-size: 0.76rem;
+                color: rgba(255, 255, 255, 0.25);
             }
             .sk-g {
                 display: grid;
@@ -376,6 +535,10 @@
                 gap: 1px;
                 background: rgba(255, 255, 255, 0.07);
                 border: 1px solid rgba(255, 255, 255, 0.07);
+            }
+            .sk-g.seen-grid {
+                background: rgba(255, 255, 255, 0.04);
+                border-color: rgba(255, 255, 255, 0.05);
             }
             .sk-b {
                 background: var(--ink);
@@ -385,6 +548,12 @@
             .sk-b:hover {
                 background: #141410;
             }
+            .sk-b.seen-cell {
+                background: #0c0c0a;
+            }
+            .sk-b.seen-cell:hover {
+                background: #111109;
+            }
             .sk-t {
                 font-family: var(--code);
                 font-size: 0.63rem;
@@ -392,18 +561,21 @@
                 letter-spacing: 0.16em;
                 text-transform: uppercase;
                 color: rgba(255, 255, 255, 0.35);
-                margin-bottom: 1.2rem;
+                margin-bottom: 1.3rem;
             }
             .sk-tags {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 0.4rem;
+                gap: 0.5rem;
             }
             .sk-tag {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
                 font-family: var(--code);
-                font-size: 0.7rem;
+                font-size: 0.68rem;
                 color: rgba(255, 255, 255, 0.65);
-                padding: 0.28rem 0.6rem;
+                padding: 0.32rem 0.7rem;
                 border: 1px solid rgba(255, 255, 255, 0.1);
                 border-radius: 2px;
                 transition: all 0.2s;
@@ -413,8 +585,50 @@
                 border-color: var(--accent);
                 color: #fff;
             }
+            .sk-tag img {
+                width: 14px;
+                height: 14px;
+                object-fit: contain;
+                filter: brightness(0) invert(1);
+                opacity: 0.7;
+                transition: opacity 0.2s;
+                flex-shrink: 0;
+            }
+            .sk-tag:hover img {
+                opacity: 1;
+            }
+            .sk-tag.colored img {
+                filter: none;
+                opacity: 0.85;
+            }
+            .sk-tag.colored:hover img {
+                opacity: 1;
+            }
+            .seen-cell .sk-tag {
+                color: rgba(255, 255, 255, 0.32);
+                border-color: rgba(255, 255, 255, 0.06);
+                font-size: 0.65rem;
+            }
+            .seen-cell .sk-tag:hover {
+                border-color: rgba(200, 71, 27, 0.35);
+                color: rgba(255, 255, 255, 0.6);
+            }
+            .seen-cell .sk-tag img {
+                opacity: 0.35;
+            }
+            .seen-cell .sk-tag.colored img {
+                filter: grayscale(70%);
+                opacity: 0.38;
+            }
+            .seen-cell .sk-tag:hover img {
+                opacity: 0.65;
+            }
+            .seen-cell .sk-tag.colored:hover img {
+                filter: grayscale(25%);
+                opacity: 0.65;
+            }
 
-            /* PROJECTS */
+            /* ── PROJECTS ── */
             .proj-list {
                 display: flex;
                 flex-direction: column;
@@ -426,7 +640,7 @@
                 align-items: start;
                 padding: 2.5rem 0;
                 border-top: 1px solid var(--rule);
-                cursor: default;
+                cursor: pointer;
                 transition: all 0.2s;
                 border-radius: 2px;
             }
@@ -512,7 +726,7 @@
                 }
             }
 
-            /* MODAL */
+            /* ── MODAL ── */
             .modal-overlay {
                 display: none;
                 position: fixed;
@@ -555,42 +769,14 @@
                 overflow: hidden;
                 flex-shrink: 0;
             }
-            .modal-img {
-                position: absolute;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0;
-                transition: opacity 0.4s;
-            }
-            .modal-img.active {
-                opacity: 1;
-            }
             .modal-img-placeholder {
                 position: absolute;
                 inset: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-                gap: 0.5rem;
                 opacity: 0;
                 transition: opacity 0.4s;
             }
             .modal-img-placeholder.active {
                 opacity: 1;
-            }
-            .modal-img-placeholder .ph-icon {
-                font-size: 2.5rem;
-                opacity: 0.25;
-            }
-            .modal-img-placeholder .ph-label {
-                font-family: var(--code);
-                font-size: 0.65rem;
-                color: var(--muted);
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
             }
             .gallery-nav {
                 position: absolute;
@@ -703,15 +889,6 @@
                 border-radius: 2px;
                 padding: 0.22rem 0.55rem;
             }
-            .modal-type-badge {
-                font-family: var(--code);
-                font-size: 0.65rem;
-                background: var(--paper2);
-                color: var(--muted);
-                border: 1px solid var(--rule);
-                border-radius: 2px;
-                padding: 0.22rem 0.55rem;
-            }
             .modal-divider {
                 height: 1px;
                 background: var(--rule);
@@ -777,61 +954,70 @@
                 animation: bl 1.5s ease-in-out infinite;
             }
 
-            /* EDU */
-            .edu-g {
+            /* ── EDUCATION ── */
+            .edu-timeline {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+            }
+            .edu-item {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 4rem;
+                grid-template-columns: 160px 1fr;
+                gap: 2rem;
+                padding: 2rem 0;
+                border-top: 1px solid var(--rule);
                 align-items: start;
             }
-            .edu-main {
-                border-left: 3px solid var(--accent);
-                padding-left: 2rem;
+            .edu-item:last-child {
+                border-bottom: 1px solid var(--rule);
             }
-            .edu-yr {
+            .edu-period {
                 font-family: var(--code);
                 font-size: 0.67rem;
                 color: var(--accent);
-                letter-spacing: 0.12em;
+                letter-spacing: 0.1em;
                 text-transform: uppercase;
-                margin-bottom: 0.8rem;
+                padding-top: 0.3rem;
+            }
+            .edu-content {
             }
             .edu-deg {
                 font-family: var(--serif);
-                font-size: 1.9rem;
+                font-size: 1.5rem;
                 letter-spacing: -0.02em;
-                margin-bottom: 0.4rem;
-                line-height: 1.05;
+                margin-bottom: 0.25rem;
+                line-height: 1.1;
             }
             .edu-school {
-                font-size: 0.9rem;
+                font-size: 0.88rem;
                 font-weight: 600;
-                margin-bottom: 0.35rem;
+                margin-bottom: 0.25rem;
             }
             .edu-det {
-                font-size: 0.84rem;
+                font-size: 0.83rem;
                 color: var(--muted);
-                line-height: 1.65;
+                line-height: 1.6;
             }
             .edu-tags {
                 display: flex;
-                gap: 0.45rem;
+                gap: 0.4rem;
                 flex-wrap: wrap;
-                margin-top: 1.2rem;
+                margin-top: 0.9rem;
             }
             .e-tag {
                 font-family: var(--code);
-                font-size: 0.65rem;
+                font-size: 0.63rem;
                 background: var(--accent-light);
                 color: var(--accent);
                 border: 1px solid rgba(200, 71, 27, 0.18);
-                padding: 0.28rem 0.65rem;
+                padding: 0.25rem 0.6rem;
                 border-radius: 2px;
             }
-            .edu-side {
-                display: flex;
-                flex-direction: column;
+            .edu-aside {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
                 gap: 1rem;
+                margin-top: 3rem;
             }
             .box {
                 background: var(--paper2);
@@ -885,7 +1071,7 @@
                 color: var(--muted);
             }
 
-            /* CONTACT */
+            /* ── CONTACT ── */
             .contact-bg {
                 background: var(--ink);
                 padding: 6rem 4rem;
@@ -966,7 +1152,6 @@
                 color: var(--accent);
                 transform: translateX(3px);
             }
-
             footer {
                 background: var(--ink);
                 padding: 1.8rem 4rem;
@@ -991,7 +1176,7 @@
                 letter-spacing: 0.08em;
             }
 
-            /* REVEAL */
+            /* ── REVEAL ── */
             .rv {
                 opacity: 0;
                 transform: translateY(22px);
@@ -1016,6 +1201,7 @@
                 transition-delay: 0.4s;
             }
 
+            /* ── RESPONSIVE ── */
             @media (max-width: 920px) {
                 nav {
                     padding: 1rem 1.5rem;
@@ -1042,6 +1228,11 @@
                 .sk-g {
                     grid-template-columns: 1fr 1fr;
                 }
+                .sk-group-hd {
+                    padding: 0.9rem 1.2rem;
+                    flex-wrap: wrap;
+                    gap: 0.7rem;
+                }
                 .proj-row {
                     grid-template-columns: 2.5rem 1fr;
                     gap: 1.2rem;
@@ -1055,9 +1246,12 @@
                     padding-left: 1.5rem;
                     padding-right: 1.5rem;
                 }
-                .edu-g {
+                .edu-item {
                     grid-template-columns: 1fr;
-                    gap: 2rem;
+                    gap: 0.5rem;
+                }
+                .edu-aside {
+                    grid-template-columns: 1fr;
                 }
                 .c-inner {
                     grid-template-columns: 1fr;
@@ -1094,24 +1288,37 @@
             <a href="#contact" class="nav-cta">Contact</a>
         </nav>
 
-        <!-- HERO -->
+        <!-- ══ HERO ══ -->
         <div class="hero">
             <div>
                 <div class="h-label rv">
-                    Développeur Full-Stack &amp; Mobile
+                    Développeur Full-Stack &amp; Mobile &amp; DATA ENGINEER
                 </div>
-                <h1 class="h-name rv d1">
-                    [Ton Prénom]
-                    <span class="last">[Ton Nom]</span>
+                <div class="rv d1">
+                    <div class="h-photo-frame">
+                        <img
+                            src="moi.jpeg"
+                            alt="Avy Yane Devy Godehi"
+                            class="h-photo"
+                            onerror="
+                                this.style.display = 'none';
+                                this.parentElement.style.background =
+                                    'var(--paper2)';
+                            "
+                        />
+                    </div>
+                </div>
+                <h1 class="h-name rv d2">
+                    Avy Yane Devy<span class="last">Godehi</span>
                 </h1>
-                <p class="h-role rv d2">
+                <p class="h-role rv d3">
                     Je conçois des systèmes
                     <strong>performants et scalables</strong> — des
                     architectures microservices et Big Data aux applications
                     mobiles iOS/Android. Passionné par l'ingénierie logicielle
                     de fond et l'électronique embarquée.
                 </p>
-                <div class="h-actions rv d3">
+                <div class="h-actions rv d4">
                     <a href="#projects" class="btn-solid">Voir mes projets</a>
                     <a href="#contact" class="btn-ghost">Me contacter →</a>
                 </div>
@@ -1126,30 +1333,30 @@
                 </div>
                 <div class="h-stats rv d2">
                     <div class="stat">
-                        <div class="stat-n">6<sup>+</sup></div>
+                        <div class="stat-n">8<sup>+</sup></div>
                         <div class="stat-l">Projets livrés</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-n">10<sup>+</sup></div>
+                        <div class="stat-n">15<sup>+</sup></div>
                         <div class="stat-l">Technos maîtrisées</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-n">Go</div>
-                        <div class="stat-l">Langage principal</div>
+                        <div class="stat-n sm">Node · Flutter<br />Go · JS</div>
+                        <div class="stat-l">Langages principaux</div>
                     </div>
                     <div class="stat">
                         <div class="stat-n">M2</div>
-                        <div class="stat-l">Objectif France</div>
+                        <div class="stat-l">Objectif</div>
                     </div>
                 </div>
                 <div class="h-loc rv d3">
-                    <span class="dot"></span>
-                    Disponible — Abidjan, CI · Mobile à l'international
+                    <span class="dot"></span>Disponible — Abidjan, CI · Mobile à
+                    l'international
                 </div>
             </div>
         </div>
 
-        <!-- ABOUT -->
+        <!-- ══ ABOUT ══ -->
         <section class="section" id="about">
             <div class="si">
                 <div class="s-label rv">01 — À propos</div>
@@ -1173,164 +1380,433 @@
                             Données &amp; intégration de Systèmes) à l'ESATIC,
                             en double partenariat avec l'<strong
                                 >Université Côte d'Azur</strong
-                            >. Une formation rigoureuse qui allie systèmes
-                            distribués, Big Data et mobilité applicative.
+                            >. Cette formation rigoureuse allie systèmes
+                            distribués, Big Data et mobilité applicative, et
+                            prolonge mon parcours entamé à
+                            <strong>PIGIER Abidjan</strong> (BTS IDA, puis
+                            Licence Génie Logiciel).
                         </p>
                         <p>
                             Au-delà du code, je m'intéresse profondément à
                             l'<strong>électronique embarquée</strong> — montage
-                            de drones, modification de firmware de contrôleurs
-                            de vol, conception de circuits imprimés (PCB) à
-                            partir de prototypes. J'aime comprendre les systèmes
-                            jusqu'au niveau hardware.
+                            de drones FPV, modification de firmware de
+                            contrôleurs de vol, conception de circuits imprimés
+                            (PCB). J'aime comprendre les systèmes jusqu'au
+                            niveau hardware, et j'ai eu l'occasion d'en faire
+                            une démonstration concrète avec la canne connectée
+                            pour non-voyants développée à l'<strong
+                                >Orange Digital Academy</strong
+                            >.
                         </p>
                         <p>
                             Mon ambition : poursuivre en
-                            <strong>Master 2 en France</strong>, continuer à
-                            construire des projets à impact réel et contribuer à
-                            l'écosystème tech africain et international.
+                            <strong>Master 2</strong>, et continuer à construire
+                            des projets à impact réel — pour l'Afrique et
+                            au-delà.
                         </p>
                     </div>
                     <div class="a-aside rv d3">
-                        <div class="a-row">
-                            <span class="a-key">Basé à</span>
-                            <span class="a-val"
-                                >Abidjan, Côte d'Ivoire<small
-                                    >Mobile à l'international</small
-                                ></span
-                            >
+                        <div class="a-photo-wrap">
+                            <div class="a-photo-frame">
+                                <img
+                                    src="moi.jpeg"
+                                    alt="Avy Yane Devy Godehi"
+                                    class="a-photo"
+                                    onerror="
+                                        this.style.display = 'none';
+                                        this.parentElement.style.background =
+                                            'var(--paper2)';
+                                        this.parentElement.style.minHeight =
+                                            '280px';
+                                    "
+                                />
+                            </div>
+                            <div class="a-photo-caption">
+                                Abidjan, Côte d'Ivoire
+                            </div>
                         </div>
-                        <div class="a-row">
-                            <span class="a-key">Formation</span>
-                            <span class="a-val"
-                                >M1 MBDS — ESATIC<small
-                                    >× Université Côte d'Azur</small
-                                ></span
-                            >
-                        </div>
-                        <div class="a-row">
-                            <span class="a-key">Dispo</span>
-                            <span class="a-val"
-                                >Stage · Freelance · CDI<small
-                                    >Disponible dès maintenant</small
-                                ></span
-                            >
-                        </div>
-                        <div class="a-row">
-                            <span class="a-key">Objectif</span>
-                            <span class="a-val"
-                                >Master 2 en France<small
-                                    >IA · Systèmes Distribués</small
-                                ></span
-                            >
-                        </div>
-                        <div class="a-row">
-                            <span class="a-key">Passions</span>
-                            <span class="a-val"
-                                >Drones · PCB · IA · Embarqué<small
-                                    >Hardware &amp; software</small
-                                ></span
-                            >
+                        <div class="a-rows">
+                            <div class="a-row">
+                                <span class="a-key">Basé à</span
+                                ><span class="a-val"
+                                    >Abidjan, Côte d'Ivoire<small
+                                        >Mobile à l'international</small
+                                    ></span
+                                >
+                            </div>
+                            <div class="a-row">
+                                <span class="a-key">Formation</span
+                                ><span class="a-val"
+                                    >M1 MBDS — ESATIC<small
+                                        >× Université Côte d'Azur</small
+                                    ></span
+                                >
+                            </div>
+                            <div class="a-row">
+                                <span class="a-key">Dispo</span
+                                ><span class="a-val"
+                                    >Stage · Freelance · CDI<small
+                                        >Disponible dès maintenant</small
+                                    ></span
+                                >
+                            </div>
+                            <div class="a-row">
+                                <span class="a-key">Objectif</span
+                                ><span class="a-val"
+                                    >Master 2<small
+                                        >IA · Big Data · Systèmes Distribués ·
+                                        Embarqué</small
+                                    ></span
+                                >
+                            </div>
+                            <div class="a-row">
+                                <span class="a-key">Passions</span
+                                ><span class="a-val"
+                                    >Drones · Embarqué · IA · Big Data<small
+                                        >Hardware &amp; software</small
+                                    ></span
+                                >
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SKILLS -->
+        <!-- ══ SKILLS ══ -->
         <div class="skills-bg" id="skills">
             <div class="si">
                 <div class="s-label rv">02 — Stack technique</div>
-                <h2 class="s-heading rv d1">Ce que je maîtrise</h2>
-                <div class="sk-g">
-                    <div class="sk-b rv d1">
-                        <div class="sk-t">Langages &amp; Core</div>
+                <h2 class="s-heading rv d1">Technologies</h2>
+                <p class="s-sub rv d2">
+                    Deux niveaux de familiarité — honnêteté et précision avant
+                    tout.
+                </p>
+
+                <div class="sk-group-hd rv d1">
+                    <span class="sk-badge core"
+                        >✦ Maîtrise &amp; pratique régulière</span
+                    >
+                    <span class="sk-group-hint"
+                        >Utilisé en projets réels, de façon continue</span
+                    >
+                </div>
+                <div class="sk-g rv d2">
+                    <div class="sk-b">
+                        <div class="sk-t">Langages</div>
                         <div class="sk-tags">
-                            <span class="sk-tag">JavaScript</span
-                            ><span class="sk-tag">TypeScript</span
-                            ><span class="sk-tag">Go</span>
-                            <span class="sk-tag">Python</span
-                            ><span class="sk-tag">C</span
-                            ><span class="sk-tag">Dart</span
-                            ><span class="sk-tag">Swift</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                    alt=""
+                                />JavaScript</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                                    alt=""
+                                />TypeScript</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg"
+                                    alt=""
+                                />Go</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
+                                    alt=""
+                                />Dart</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                                    alt=""
+                                />Python</span
+                            >
                         </div>
                     </div>
-                    <div class="sk-b rv d2">
-                        <div class="sk-t">Backend &amp; Data</div>
+                    <div class="sk-b">
+                        <div class="sk-t">Backend &amp; Bases de données</div>
                         <div class="sk-tags">
-                            <span class="sk-tag">Node.js</span
-                            ><span class="sk-tag">Express</span
-                            ><span class="sk-tag">Fastify</span>
-                            <span class="sk-tag">MongoDB</span
-                            ><span class="sk-tag">MySQL</span
-                            ><span class="sk-tag">Redis</span
-                            ><span class="sk-tag">CassandraDB</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                                    alt=""
+                                />Node.js</span
+                            >
+                            <span class="sk-tag"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                                    alt=""
+                                />Express</span
+                            >
+                            <span class="sk-tag">Fastify</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                                    alt=""
+                                />MongoDB</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                                    alt=""
+                                />MySQL</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+                                    alt=""
+                                />Redis</span
+                            >
                         </div>
                     </div>
-                    <div class="sk-b rv d3">
+                    <div class="sk-b">
                         <div class="sk-t">Frontend &amp; Mobile</div>
                         <div class="sk-tags">
-                            <span class="sk-tag">Vue.js</span
-                            ><span class="sk-tag">SvelteKit</span>
-                            <span class="sk-tag">Flutter</span
-                            ><span class="sk-tag">SwiftUI</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                                    alt=""
+                                />Flutter</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+                                    alt=""
+                                />SwiftUI</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
+                                    alt=""
+                                />Kotlin</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg"
+                                    alt=""
+                                />Vue.js</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg"
+                                    alt=""
+                                />SvelteKit</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                    alt=""
+                                />React.js</span
+                            >
                         </div>
                     </div>
-                    <div class="sk-b rv d1">
-                        <div class="sk-t">DevOps &amp; Big Data</div>
+                    <div class="sk-b">
+                        <div class="sk-t">DevOps &amp; Architecture</div>
                         <div class="sk-tags">
-                            <span class="sk-tag">Docker</span
-                            ><span class="sk-tag">Microservices</span>
-                            <span class="sk-tag">Kafka</span
-                            ><span class="sk-tag">Hadoop</span
-                            ><span class="sk-tag">Spark</span
-                            ><span class="sk-tag">AWS S3</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                                    alt=""
+                                />Docker</span
+                            >
+                            <span class="sk-tag">Microservices</span>
+                            <span class="sk-tag">REST API</span>
+                            <span class="sk-tag">WebSockets</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                                    alt=""
+                                />Git</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                                    alt=""
+                                />GitHub</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg"
+                                    alt=""
+                                />GitLab</span
+                            >
                         </div>
                     </div>
-                    <div class="sk-b rv d2">
-                        <div class="sk-t">IA &amp; Embarqué</div>
+                    <div class="sk-b">
+                        <div class="sk-t">Big Data &amp; Cloud</div>
                         <div class="sk-tags">
-                            <span class="sk-tag">Machine Learning</span
-                            ><span class="sk-tag">Computer Vision</span>
-                            <span class="sk-tag">Firmware</span
-                            ><span class="sk-tag">PCB Design</span
-                            ><span class="sk-tag">Drones</span>
+                            <span class="sk-tag">Kafka</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                                    alt=""
+                                />AWS S3</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original-wordmark.svg"
+                                    alt=""
+                                />FIREBASE</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original-wordmark.svg"
+                                    alt=""
+                                />SUPABASE</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original-wordmark.svg"
+                                    alt=""
+                                />GCP</span
+                            >
                         </div>
                     </div>
-                    <div class="sk-b rv d3">
-                        <div class="sk-t">Outils &amp; Méthodes</div>
+                    <div class="sk-b">
+                        <div class="sk-t">Embarqué &amp; Hardware</div>
                         <div class="sk-tags">
-                            <span class="sk-tag">Git</span
-                            ><span class="sk-tag">REST API</span>
-                            <span class="sk-tag">WebSockets</span
-                            ><span class="sk-tag">Arch. distribuée</span
-                            ><span class="sk-tag">Agile</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg"
+                                    alt=""
+                                />Raspberry Pi</span
+                            >
+                            <span class="sk-tag">PCB Design</span>
+                            <span class="sk-tag">Firmware</span>
+                            <span class="sk-tag">Drones FPV</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sk-group-hd rv d3" style="margin-top: 2.5rem">
+                    <span class="sk-badge seen"
+                        >◌ Déjà touché — École &amp; exploration</span
+                    >
+                    <span class="sk-group-hint"
+                        >Notions acquises en cours ou projets ponctuels</span
+                    >
+                </div>
+                <div class="sk-g seen-grid rv d4">
+                    <div class="sk-b seen-cell">
+                        <div class="sk-t">Langages</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+                                    alt=""
+                                />C</span
+                            >
+                            <span class="sk-tag"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                    alt=""
+                                />Java Spring Boot</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg"
+                                    alt=""
+                                />Laravel</span
+                            >
+                        </div>
+                    </div>
+                    <div class="sk-b seen-cell">
+                        <div class="sk-t">Mobile &amp; Frontend</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
+                                    alt=""
+                                />Kotlin Multiplatform</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                    alt=""
+                                />React Native</span
+                            >
+                        </div>
+                    </div>
+                    <div class="sk-b seen-cell">
+                        <div class="sk-t">Big Data &amp; Cloud</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hadoop/hadoop-original.svg"
+                                    alt=""
+                                />Hadoop</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg"
+                                    alt=""
+                                />Spark</span
+                            >
+                            <span class="sk-tag">CassandraDB</span>
+                        </div>
+                    </div>
+                    <div class="sk-b seen-cell">
+                        <div class="sk-t">IA &amp; Data Science</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                                    alt=""
+                                />TensorFlow</span
+                            >
+                            <span class="sk-tag">Computer Vision</span>
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
+                                    alt=""
+                                />NumPy</span
+                            >
+                        </div>
+                    </div>
+                    <div class="sk-b seen-cell">
+                        <div class="sk-t">Outils</div>
+                        <div class="sk-tags">
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                                    alt=""
+                                />Figma</span
+                            >
+                            <span class="sk-tag colored"
+                                ><img
+                                    src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg"
+                                    alt=""
+                                />Jira</span
+                            >
+                            <span class="sk-tag">Supabase</span>
+                            <span class="sk-tag">Firebase</span>
+                            <span class="sk-tag">PostMan</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PROJECTS -->
+        <!-- ══ PROJECTS ══ -->
         <section class="section" id="projects">
             <div class="si">
                 <div class="s-label rv">03 — Projets</div>
                 <h2 class="s-heading rv d1">Ce que j'ai construit</h2>
                 <div class="proj-list">
-                    <div
-                        class="proj-row rv"
-                        style="cursor: pointer"
-                        onclick="openModal(0)"
-                    >
+                    <div class="proj-row rv" onclick="openModal(0)">
                         <div class="proj-num">01</div>
                         <div>
                             <div class="proj-title">Oula — Réseau social</div>
                             <p class="proj-desc">
                                 Architecture microservices conçue pour une forte
-                                montée en charge. Traitement asynchrone des
-                                événements via Kafka, stockage objet S3,
-                                containerisation Docker. Go pour les services
-                                critiques, Node.js pour les services métier.
+                                montée en charge. Traitement asynchrone via
+                                Kafka, stockage objet S3, containerisation
+                                Docker. Go pour les services critiques, Node.js
+                                pour les services métier.
                             </p>
                             <div class="proj-tags">
                                 <span class="pt">Go</span
@@ -1338,43 +1814,37 @@
                                 ><span class="pt">Kafka</span
                                 ><span class="pt">AWS S3</span
                                 ><span class="pt">Docker</span
-                                ><span class="pt">Microservices</span>
+                                ><span class="pt">Microservices</span
+                                ><span class="pt">MongoDB</span
+                                ><span class="pt">Redis</span>
                             </div>
                         </div>
                         <div class="proj-type">Réseau social ↗</div>
                     </div>
 
-                    <div
-                        class="proj-row rv"
-                        style="cursor: pointer"
-                        onclick="openModal(1)"
-                    >
+                    <div class="proj-row rv" onclick="openModal(1)">
                         <div class="proj-num">02</div>
                         <div>
                             <div class="proj-title">
-                                Gestion de trafic intelligent
+                                Je Réside — Plateforme immobilière
                             </div>
                             <p class="proj-desc">
-                                Système de régulation du flux de trafic assisté
-                                par l'IA pour l'axe Agban-Gesco à Abidjan.
-                                Analyse en temps réel des flux de circulation,
-                                optimisation des feux tricolores et modélisation
-                                3D du système.
+                                Plateforme de mise en relation entre
+                                propriétaires de résidences et d'hôtels et leurs
+                                clients. Les propriétaires publient leurs biens,
+                                les voyageurs réservent directement. Projet
+                                personnel développé de A à Z.
                             </p>
                             <div class="proj-tags">
-                                <span class="pt">IA</span
-                                ><span class="pt">Computer Vision</span
-                                ><span class="pt">Modélisation 3D</span>
+                                <span class="pt">React.js</span
+                                ><span class="pt">Node.js</span
+                                ><span class="pt">MySQL</span>
                             </div>
                         </div>
-                        <div class="proj-type">Smart City ↗</div>
+                        <div class="proj-type">Plateforme web ↗</div>
                     </div>
 
-                    <div
-                        class="proj-row rv"
-                        style="cursor: pointer"
-                        onclick="openModal(2)"
-                    >
+                    <div class="proj-row rv" onclick="openModal(2)">
                         <div class="proj-num">03</div>
                         <div>
                             <div class="proj-title">Vente Loto Bonheur</div>
@@ -1394,88 +1864,131 @@
                         <div class="proj-type">B2B Platform ↗</div>
                     </div>
 
-                    <div
-                        class="proj-row rv"
-                        style="cursor: pointer"
-                        onclick="openModal(3)"
-                    >
+                    <div class="proj-row rv" onclick="openModal(3)">
                         <div class="proj-num">04</div>
                         <div>
                             <div class="proj-title">
-                                Dashboard flotte de taxis
+                                Abidjango — Application de covoiturage
                             </div>
                             <p class="proj-desc">
-                                Interface de supervision et logique serveur
-                                sur-mesure pour le tracking GPS et
-                                l'optimisation en temps réel d'une flotte de
-                                véhicules à Abidjan. Reporting et optimisation
-                                des trajets.
+                                Application de covoiturage pensée différemment
+                                de Yango. Développée en binôme, je prenais en
+                                charge l'intégralité du backend avec Node.js et
+                                Java Spring Boot, gestion des trajets et des
+                                utilisateurs en temps réel.
                             </p>
                             <div class="proj-tags">
-                                <span class="pt">Dashboard</span
-                                ><span class="pt">GPS Tracking</span
-                                ><span class="pt">Real-time</span
-                                ><span class="pt">HTML/CSS</span>
+                                <span class="pt">Java Spring Boot</span
+                                ><span class="pt">Node.js</span
+                                ><span class="pt">MySQL</span
+                                ><span class="pt">Firebase</span
+                                ><span class="pt">Real-time</span>
                             </div>
                         </div>
-                        <div class="proj-type">Fleet Management ↗</div>
+                        <div class="proj-type">Application mobile ↗</div>
                     </div>
 
-                    <div
-                        class="proj-row rv"
-                        style="cursor: pointer"
-                        onclick="openModal(4)"
-                    >
+                    <div class="proj-row rv" onclick="openModal(4)">
                         <div class="proj-num">05</div>
                         <div>
-                            <div class="proj-title">Connect Pro</div>
+                            <div class="proj-title">
+                                Portail d'applications — CNPS
+                            </div>
                             <p class="proj-desc">
-                                Application logicielle innovante axée sur la
-                                connectivité et l'optimisation de l'expérience
-                                utilisateur. Architecture en cours de
-                                définition.
+                                Réalisé en stage de fin d'études à la CNPS
+                                (Caisse Nationale de Prévoyance Sociale).
+                                Application portail web centralisant toutes les
+                                applications internes de la CNPS en un seul
+                                point d'accès. Projet mené seul.
                             </p>
                             <div class="proj-tags">
-                                <span class="pt">En cours</span>
-                            </div>
-                            <div class="wip">
-                                <span class="wip-dot"></span> En développement
+                                <span class="pt">Node.js</span
+                                ><span class="pt">Vue.js</span
+                                ><span class="pt">MySQL</span
+                                ><span class="pt">Docker</span
+                                ><span class="pt">Supabase</span
+                                ><span class="pt">Postman</span>
                             </div>
                         </div>
-                        <div class="proj-type">Application ↗</div>
+                        <div class="proj-type">Stage · CNPS ↗</div>
                     </div>
 
-                    <div
-                        class="proj-row rv"
-                        style="cursor: pointer"
-                        onclick="openModal(5)"
-                    >
+                    <div class="proj-row rv" onclick="openModal(5)">
                         <div class="proj-num">06</div>
                         <div>
                             <div class="proj-title">
-                                Électronique &amp; Drones
+                                Event-Ti — Billetterie en ligne
                             </div>
                             <p class="proj-desc">
-                                Projets hardware personnels : montage de drones
-                                FPV, modification de firmware de contrôleurs de
-                                vol, conception de circuits imprimés (PCB) à
-                                partir de prototypes. Exploration de
-                                l'intersection logiciel/matériel.
+                                Application de billetterie en ligne développée
+                                pour l'entreprise Synchrone Techno. J'ai conçu
+                                le back-office avec SvelteKit, l'application
+                                mobile avec Flutter, et le backend avec Node.js
+                                et Python.
                             </p>
                             <div class="proj-tags">
-                                <span class="pt">PCB Design</span
-                                ><span class="pt">Firmware</span
-                                ><span class="pt">Drones</span
-                                ><span class="pt">Embarqué</span>
+                                <span class="pt">SvelteKit</span
+                                ><span class="pt">Flutter</span
+                                ><span class="pt">Node.js</span
+                                ><span class="pt">Python</span
+                                ><span class="pt">MySQL</span
+                                ><span class="pt">MongoDB</span>
                             </div>
                         </div>
-                        <div class="proj-type">Hardware ↗</div>
+                        <div class="proj-type">Synchrone Techno ↗</div>
+                    </div>
+
+                    <div class="proj-row rv" onclick="openModal(6)">
+                        <div class="proj-num">07</div>
+                        <div>
+                            <div class="proj-title">Gestion 911 Security</div>
+                            <p class="proj-desc">
+                                Application mobile et web pour la société 911
+                                Security, pour améliorer la gestion de leur
+                                comptabilité interne. Développé pour Synchrone
+                                Techno avec Flutter pour le mobile et Vue.js
+                                pour le web.
+                            </p>
+                            <div class="proj-tags">
+                                <span class="pt">Flutter</span
+                                ><span class="pt">Vue.js</span
+                                ><span class="pt">Node.js</span
+                                ><span class="pt">MySQL</span>
+                            </div>
+                        </div>
+                        <div class="proj-type">Synchrone Techno ↗</div>
+                    </div>
+
+                    <div class="proj-row rv" onclick="openModal(7)">
+                        <div class="proj-num">08</div>
+                        <div>
+                            <div class="proj-title">
+                                Canne connectée pour non-voyants
+                            </div>
+                            <p class="proj-desc">
+                                Projet à fort impact social développé en équipe
+                                de trois à l'Orange Digital Academy. La canne
+                                assiste les personnes non-voyantes et permet à
+                                leurs proches de les localiser. J'ai développé
+                                l'application mobile Flutter et le backend.
+                            </p>
+                            <div class="proj-tags">
+                                <span class="pt">Flutter</span
+                                ><span class="pt">Python</span
+                                ><span class="pt">Node.js</span
+                                ><span class="pt">PCB Design</span
+                                ><span class="pt">Firmware</span
+                                ><span class="pt">Embarqué</span
+                                ><span class="pt">Real-time</span>
+                            </div>
+                        </div>
+                        <div class="proj-type">Orange Digital Academy ↗</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- MODAL -->
+        <!-- ══ MODAL ══ -->
         <div
             class="modal-overlay"
             id="modalOverlay"
@@ -1504,60 +2017,104 @@
             </div>
         </div>
 
-        <!-- EDUCATION -->
+        <!-- ══ FORMATION ══ -->
         <section class="section" id="formation">
             <div class="si">
                 <div class="s-label rv">04 — Formation</div>
                 <h2 class="s-heading rv d1">Parcours académique</h2>
-                <div class="edu-g">
-                    <div class="edu-main rv d2">
-                        <div class="edu-yr">2024 — En cours</div>
-                        <div class="edu-deg">Master 1 MBDS</div>
-                        <div class="edu-school">
-                            ESATIC, Abidjan, Côte d'Ivoire
-                        </div>
-                        <p class="edu-det">
-                            Mobiquité, Bases de Données &amp; intégration de
-                            Systèmes<br />En partenariat avec l'<strong
-                                >Université Côte d'Azur</strong
-                            >, Nice, France
-                        </p>
-                        <div class="edu-tags">
-                            <span class="e-tag">Big Data</span
-                            ><span class="e-tag">Systèmes distribués</span>
-                            <span class="e-tag">Mobilité</span
-                            ><span class="e-tag">Architecture Cloud</span>
+                <div class="edu-timeline">
+                    <div class="edu-item rv">
+                        <div class="edu-period">2024 — En cours</div>
+                        <div class="edu-content">
+                            <div class="edu-deg">Master 1 MBDS</div>
+                            <div class="edu-school">
+                                ESATIC, Abidjan, Côte d'Ivoire
+                            </div>
+                            <p class="edu-det">
+                                Mobiquité, Bases de Données &amp; intégration de
+                                Systèmes<br />En partenariat avec l'<strong
+                                    >Université Côte d'Azur</strong
+                                >, Nice, France
+                            </p>
+                            <div class="edu-tags">
+                                <span class="e-tag">Big Data</span
+                                ><span class="e-tag">Systèmes distribués</span
+                                ><span class="e-tag">Mobilité</span
+                                ><span class="e-tag">Architecture Cloud</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="edu-side rv d3">
-                        <div class="box box-accent">
-                            <h4>Prochain objectif : Master 2 en France</h4>
-                            <p>
-                                Je vise une poursuite d'études en
-                                <strong>Master 2 en France</strong>, en
-                                spécialisation IA, Systèmes Distribués ou
-                                Informatique avancée. Ma formation
-                                franco-ivoirienne est un tremplin idéal pour
-                                cette transition internationale.
+
+                    <div class="edu-item rv">
+                        <div class="edu-period">2023 — 2024</div>
+                        <div class="edu-content">
+                            <div class="edu-deg">Licence Génie Logiciel</div>
+                            <div class="edu-school">
+                                PIGIER, Abidjan, Côte d'Ivoire
+                            </div>
+                            <p class="edu-det">
+                                Spécialité : Génie Logiciel — conception,
+                                développement et déploiement d'applications web
+                                et mobile
                             </p>
+                            <div class="edu-tags">
+                                <span class="e-tag">Génie logiciel</span
+                                ><span class="e-tag">Dev web</span
+                                ><span class="e-tag">Dev mobile</span
+                                ><span class="e-tag">DevOps</span
+                                ><span class="e-tag">Base de données</span>
+                            </div>
                         </div>
-                        <div class="box">
-                            <div class="box-label">Langues</div>
-                            <div class="lang-row">
-                                <span class="lang-n">Français</span
-                                ><span class="lang-l">Langue maternelle</span>
+                    </div>
+
+                    <div class="edu-item rv">
+                        <div class="edu-period">2020 — 2022</div>
+                        <div class="edu-content">
+                            <div class="edu-deg">BTS Informatique — IDA</div>
+                            <div class="edu-school">
+                                PIGIER, Abidjan, Côte d'Ivoire
                             </div>
-                            <div class="lang-row">
-                                <span class="lang-n">Anglais</span
-                                ><span class="lang-l">Courant — technique</span>
+                            <p class="edu-det">
+                                Informatique et Développement d'Applications
+                            </p>
+                            <div class="edu-tags">
+                                <span class="e-tag">Génie logiciel</span
+                                ><span class="e-tag"
+                                    >Développement d'application</span
+                                ><span class="e-tag">Déploiement</span
+                                ><span class="e-tag">Architecture Cloud</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="edu-aside">
+                    <div class="box box-accent rv">
+                        <h4>Prochain objectif : Master 2</h4>
+                        <p>
+                            Je vise une poursuite d'études en
+                            <strong>Master 2</strong>, en spécialisation IA,
+                            Systèmes Distribués ou Embarqué. Ma formation
+                            franco-ivoirienne est un tremplin idéal pour cette
+                            transition internationale.
+                        </p>
+                    </div>
+                    <div class="box rv d1">
+                        <div class="box-label">Langues</div>
+                        <div class="lang-row">
+                            <span class="lang-n">Français</span
+                            ><span class="lang-l">Langue maternelle</span>
+                        </div>
+                        <div class="lang-row">
+                            <span class="lang-n">Anglais</span
+                            ><span class="lang-l">Courant — technique</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT -->
+        <!-- ══ CONTACT ══ -->
         <div class="contact-bg" id="contact">
             <div class="c-inner">
                 <div class="rv">
@@ -1572,35 +2129,35 @@
                     </p>
                 </div>
                 <div class="c-links rv d2">
-                    <a href="mailto:ton.email@example.com" class="c-lnk">
+                    <a href="mailto:godehiyane@gmail.com" class="c-lnk">
                         <span class="c-icon">@</span>
                         <div>
                             <div class="c-key">Email</div>
-                            <div class="c-val">ton.email@example.com</div>
+                            <div class="c-val">godehiyane@gmail.com</div>
                         </div>
                         <span class="c-arr">→</span>
                     </a>
                     <a
-                        href="https://linkedin.com/in/tonprofil"
-                        target="_blank"
-                        class="c-lnk"
-                    >
-                        <span class="c-icon">in</span>
-                        <div>
-                            <div class="c-key">LinkedIn</div>
-                            <div class="c-val">linkedin.com/in/tonprofil</div>
-                        </div>
-                        <span class="c-arr">→</span>
-                    </a>
-                    <a
-                        href="https://github.com/tonpseudo"
+                        href="https://github.com/vivace23"
                         target="_blank"
                         class="c-lnk"
                     >
                         <span class="c-icon">{}</span>
                         <div>
                             <div class="c-key">GitHub</div>
-                            <div class="c-val">github.com/tonpseudo</div>
+                            <div class="c-val">github.com/vivace23</div>
+                        </div>
+                        <span class="c-arr">→</span>
+                    </a>
+                    <a
+                        href="https://gitlab.com/avydevy"
+                        target="_blank"
+                        class="c-lnk"
+                    >
+                        <span class="c-icon">{}</span>
+                        <div>
+                            <div class="c-key">GitLab</div>
+                            <div class="c-val">gitlab.com/avydevy</div>
                         </div>
                         <span class="c-arr">→</span>
                     </a>
@@ -1614,7 +2171,6 @@
         </footer>
 
         <script>
-            // Scroll progress
             const prog = document.getElementById("prog");
             window.addEventListener(
                 "scroll",
@@ -1628,8 +2184,6 @@
                 },
                 { passive: true },
             );
-
-            // Reveal on scroll
             const obs = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((e) => {
@@ -1643,8 +2197,6 @@
             );
             document.querySelectorAll(".rv").forEach((el) => obs.observe(el));
 
-            // ── PROJECT DATA ──
-            // Photos: using picsum.photos with seeds for consistent placeholder images per project
             const PROJECTS = [
                 {
                     num: "01",
@@ -1666,11 +2218,11 @@
                         { seed: 30, label: "Architecture système" },
                         { seed: 40, label: "Profil utilisateur" },
                     ],
-                    desc: "Conception et développement complet d'un réseau social pensé pour supporter une <strong>forte montée en charge</strong>. L'objectif était de bâtir une infrastructure capable de gérer des millions d'événements simultanés sans dégradation de performance.",
+                    desc: "Conception et développement complet d'un réseau social pensé pour supporter une <strong>forte montée en charge</strong>. L'objectif : bâtir une infrastructure capable de gérer des millions d'événements simultanés sans dégradation de performance.",
                     features: [
                         "Architecture microservices découplée — chaque service Go ou Node.js est indépendant et déployable séparément",
                         "Traitement asynchrone des événements via Apache Kafka pour garantir la résilience et la scalabilité",
-                        "Stockage d'objets médias sur AWS S3 avec CDN intégré pour une distribution rapide des assets",
+                        "Stockage des médias sur AWS S3 avec CDN intégré pour une distribution rapide des assets",
                         "Containerisation complète via Docker et orchestration des services en environnement distribué",
                         "Bases de données polyglotes : MongoDB pour les documents, Redis pour le cache et les sessions",
                     ],
@@ -1678,28 +2230,22 @@
                 },
                 {
                     num: "02",
-                    title: "Gestion de trafic intelligent",
-                    type: "Smart City · IA & Computer Vision",
-                    tags: [
-                        "Intelligence Artificielle",
-                        "Computer Vision",
-                        "Modélisation 3D",
-                        "Python",
-                        "Analyse temps réel",
-                    ],
+                    title: "Je Réside — Plateforme immobilière",
+                    type: "Plateforme web · Immobilier",
+                    tags: ["React.js", "Node.js", "MySQL", "Projet personnel"],
                     imgs: [
-                        { seed: 50, label: "Simulation de l'axe Agban-Gesco" },
-                        { seed: 60, label: "Dashboard de contrôle" },
-                        { seed: 70, label: "Modèle 3D du carrefour" },
-                        { seed: 80, label: "Analyse des flux" },
+                        { seed: 50, label: "Page d'accueil" },
+                        { seed: 60, label: "Listing des résidences" },
+                        { seed: 70, label: "Détail d'un bien" },
+                        { seed: 80, label: "Tableau de bord propriétaire" },
                     ],
-                    desc: "Système de régulation intelligente du flux de trafic pour l'<strong>axe Agban-Gesco à Abidjan</strong>. Le projet combine vision par ordinateur, IA et modélisation 3D pour optimiser en temps réel la circulation et réduire les embouteillages sur l'un des axes les plus chargés de la ville.",
+                    desc: "Projet personnel de mise en relation entre <strong>propriétaires de résidences et d'hôtels</strong> et leurs clients potentiels. Les propriétaires publient leurs biens, les voyageurs parcourent les annonces et réservent directement. Développé de A à Z.",
                     features: [
-                        "Détection et classification des véhicules par computer vision en temps réel via caméras fixes",
-                        "Algorithme d'optimisation des cycles de feux basé sur la densité du trafic détectée",
-                        "Modélisation 3D de l'axe routier pour visualisation et présentation du système",
-                        "Tableau de bord de supervision avec métriques clés : densité, temps d'attente, flux/heure",
-                        "Réduction estimée des temps d'attente aux carrefours de 30% en simulation",
+                        "Interface propriétaire pour publier et gérer ses biens avec photos, description et tarifs",
+                        "Interface client pour rechercher, filtrer et réserver des résidences ou hôtels",
+                        "Système d'authentification sécurisé avec gestion des rôles (propriétaire / client)",
+                        "Tableau de bord analytique pour les propriétaires : réservations, taux d'occupation, revenus",
+                        "Backend REST API Node.js avec base de données MySQL relationnelle",
                     ],
                     wip: false,
                 },
@@ -1712,7 +2258,6 @@
                         "Real-time",
                         "Back-office",
                         "Analytics",
-                        "Dashboard",
                         "Node.js",
                     ],
                     imgs: [
@@ -1721,7 +2266,7 @@
                         { seed: 110, label: "Tableau de bord des ventes" },
                         { seed: 120, label: "Rapport en temps réel" },
                     ],
-                    desc: "Plateforme web <strong>B2B complète</strong> pour la gestion et le suivi en temps réel des ventes de machines de loterie Loto Bonheur. Le système relie les vendeurs sur le terrain à un back-office centralisé pour un contrôle total des opérations.",
+                    desc: "Plateforme web <strong>B2B complète</strong> pour la gestion et le suivi en temps réel des ventes de machines de loterie Loto Bonheur. Le système relie les vendeurs terrain à un back-office centralisé pour un contrôle total des opérations.",
                     features: [
                         "Interface vendeur dédiée avec tableau de bord en temps réel des ventes par machine",
                         "Back-office administrateur avec gestion des comptes, des terminaux et des revenus",
@@ -1733,94 +2278,149 @@
                 },
                 {
                     num: "04",
-                    title: "Dashboard flotte de taxis",
-                    type: "Fleet Management · Real-time",
+                    title: "Abidjango — Covoiturage",
+                    type: "Application mobile · Transport",
                     tags: [
-                        "Dashboard",
-                        "GPS Tracking",
+                        "Java Spring Boot",
+                        "Node.js",
+                        "MySQL",
+                        "Firebase",
                         "Real-time",
-                        "HTML/CSS",
-                        "WebSockets",
-                        "Cartographie",
                     ],
                     imgs: [
-                        { seed: 130, label: "Carte de suivi flotte" },
-                        { seed: 140, label: "Tableau de bord opérationnel" },
-                        { seed: 150, label: "Détail chauffeur" },
-                        { seed: 160, label: "Rapport de trajets" },
+                        { seed: 130, label: "Écran passager" },
+                        { seed: 140, label: "Carte en temps réel" },
+                        { seed: 150, label: "Réservation de trajet" },
+                        { seed: 160, label: "Tableau de bord chauffeur" },
                     ],
-                    desc: "Interface de supervision complète et logique serveur sur-mesure pour le <strong>suivi GPS en temps réel</strong> d'une flotte de taxis à Abidjan. Le système permet aux opérateurs de suivre, coordonner et optimiser l'ensemble de la flotte depuis un seul écran.",
+                    desc: "Application de covoiturage urbain pour Abidjan, pensée comme une <strong>alternative différenciante à Yango</strong>. Développée en binôme, je me suis chargé de l'intégralité du backend : gestion des utilisateurs, des trajets et de la communication en temps réel.",
                     features: [
-                        "Carte interactive avec position en temps réel de chaque véhicule de la flotte",
-                        "Suivi des statuts : disponible, en course, hors service — mis à jour en continu",
-                        "Historique complet des trajets avec durée, distance, revenus générés par chauffeur",
-                        "Optimisation des affectations : suggestion du taxi le plus proche pour une demande",
-                        "Logique serveur sur-mesure avec API REST et connexions WebSockets persistantes",
+                        "Backend dual : Node.js pour la couverture temps réel, Java Spring Boot pour la logique métier robuste",
+                        "Géolocalisation en temps réel des chauffeurs et des passagers via Firebase",
+                        "Système de matching chauffeur / passager basé sur la proximité et la disponibilité",
+                        "Gestion des paiements, des trajets et de l'historique des courses",
+                        "Architecture pensée pour scalabilité et faible latence en conditions urbaines",
                     ],
                     wip: false,
                 },
                 {
                     num: "05",
-                    title: "Connect Pro",
-                    type: "Application · En développement",
-                    tags: ["En cours", "Connectivité", "UX", "Mobile"],
+                    title: "Portail d'applications — CNPS",
+                    type: "Stage de fin d'études · Entreprise",
+                    tags: [
+                        "Node.js",
+                        "Vue.js",
+                        "MySQL",
+                        "Docker",
+                        "Supabase",
+                        "Postman",
+                    ],
                     imgs: [
-                        { seed: 170, label: "Concept UI — Accueil" },
-                        { seed: 180, label: "Concept UI — Connexions" },
-                        { seed: 190, label: "Wireframe fonctionnel" },
+                        { seed: 170, label: "Page d'accueil du portail" },
+                        { seed: 180, label: "Catalogue d'applications" },
+                        { seed: 190, label: "Gestion des accès" },
+                        { seed: 200, label: "Tableau de bord admin" },
                     ],
-                    desc: "Application logicielle innovante axée sur la <strong>connectivité et l'optimisation de l'expérience utilisateur</strong>. Le projet est en phase de conception et de développement actif. Les détails complets seront dévoilés à la sortie.",
+                    desc: "Réalisé seul lors de mon <strong>stage de fin d'études à la CNPS</strong> (Caisse Nationale de Prévoyance Sociale). Mission : concevoir un portail web centralisant toutes les applications internes de la CNPS en un unique point d'accès sécurisé.",
                     features: [
-                        "Concept centré sur la mise en relation et la connectivité entre utilisateurs",
-                        "Architecture pensée pour la performance et la fluidité de l'expérience",
-                        "Design UX/UI en cours de définition avec prototypage itératif",
+                        "Portail web listant et donnant accès à toutes les applications internes de la CNPS",
+                        "Système d'authentification centralisé et gestion des droits d'accès par application",
+                        "Interface d'administration pour ajouter, modifier ou désactiver des applications du portail",
+                        "Backend Node.js, frontend Vue.js, base de données MySQL, déployé via Docker",
+                        "Documentation API complète réalisée sous Postman, base de données hébergée sur Supabase",
                     ],
-                    wip: true,
+                    wip: false,
                 },
                 {
                     num: "06",
-                    title: "Électronique & Drones",
-                    type: "Hardware · Projets personnels",
+                    title: "Event-Ti — Billetterie en ligne",
+                    type: "Synchrone Techno · Application",
                     tags: [
-                        "PCB Design",
-                        "Firmware",
-                        "Drones FPV",
-                        "Électronique embarquée",
-                        "C",
-                        "Soudure",
+                        "SvelteKit",
+                        "Flutter",
+                        "Node.js",
+                        "Python",
+                        "MySQL",
+                        "MongoDB",
                     ],
                     imgs: [
-                        { seed: 200, label: "Montage drone FPV" },
-                        { seed: 210, label: "Circuit PCB conçu" },
-                        { seed: 220, label: "Contrôleur de vol modifié" },
-                        { seed: 230, label: "Composants électroniques" },
+                        { seed: 210, label: "Back-office billetterie" },
+                        { seed: 220, label: "App mobile — Événements" },
+                        { seed: 230, label: "Scan de billet" },
+                        { seed: 240, label: "Gestion des événements" },
                     ],
-                    desc: "Ensemble de projets personnels à l'intersection du <strong>logiciel et du matériel</strong>. Passionné par la compréhension des systèmes jusqu'au niveau électronique, je conçois, soude et programme mes propres équipements.",
+                    desc: "Application de billetterie en ligne développée pour l'entreprise <strong>Synchrone Techno</strong>. J'ai conçu le back-office avec SvelteKit, l'application mobile avec Flutter, et le backend avec Node.js et Python selon les besoins fonctionnels.",
                     features: [
-                        "Montage complet de drones FPV racing : choix des composants, assemblage, calibration",
-                        "Modification et flash de firmware custom sur contrôleurs de vol (Betaflight, INAV)",
-                        "Conception de circuits imprimés (PCB) sous KiCad à partir de schematics maison",
-                        "Prototypage électronique : lecture de datasheets, soudure CMS, tests et debugging",
-                        "Exploration du lien entre firmware embarqué en C et comportement physique des systèmes",
+                        "Back-office SvelteKit : gestion des événements, des billets, des ventes et des participants",
+                        "Application mobile Flutter cross-platform (iOS & Android) pour l'achat et la gestion des billets",
+                        "Système de scan QR code pour la validation des billets à l'entrée des événements",
+                        "Backend Node.js pour les services temps réel, Python pour les traitements analytiques",
+                        "Double base de données : MySQL pour les données transactionnelles, MongoDB pour les logs",
+                    ],
+                    wip: false,
+                },
+                {
+                    num: "07",
+                    title: "Gestion 911 Security",
+                    type: "Synchrone Techno · Application",
+                    tags: ["Flutter", "Vue.js", "Node.js", "MySQL"],
+                    imgs: [
+                        { seed: 250, label: "Application mobile" },
+                        { seed: 260, label: "Interface web" },
+                        { seed: 270, label: "Tableau de bord comptable" },
+                        { seed: 280, label: "Gestion du personnel" },
+                    ],
+                    desc: "Application mobile et web développée pour la société <strong>911 Security</strong>, pour améliorer la gestion de leur comptabilité et de leur personnel. Projet réalisé pour Synchrone Techno avec Flutter pour le mobile et Vue.js pour le web.",
+                    features: [
+                        "Application mobile Flutter pour la gestion terrain : pointage, rapports et alertes",
+                        "Interface web Vue.js pour les managers : vue globale de la comptabilité et du personnel",
+                        "Gestion des entrées/sorties financières avec catégorisation et suivi budgétaire",
+                        "Tableau de bord de reporting avec synthèses mensuelles et exports",
+                        "Backend Node.js avec API REST sécurisée et base de données MySQL",
+                    ],
+                    wip: false,
+                },
+                {
+                    num: "08",
+                    title: "Canne connectée pour non-voyants",
+                    type: "Orange Digital Academy · Projet social",
+                    tags: [
+                        "Flutter",
+                        "Python",
+                        "Node.js",
+                        "PCB Design",
+                        "Firmware",
+                        "Embarqué",
+                        "Real-time",
+                    ],
+                    imgs: [
+                        { seed: 290, label: "La canne connectée" },
+                        { seed: 300, label: "Application mobile de suivi" },
+                        { seed: 310, label: "Circuit PCB" },
+                        { seed: 320, label: "Interface de localisation" },
+                    ],
+                    desc: "Projet à <strong>fort impact social</strong> développé en équipe de trois à l'Orange Digital Academy. La canne connectée assiste les personnes non-voyantes et malvoyantes dans leurs déplacements, et permet à leurs proches de les localiser en temps réel.",
+                    features: [
+                        "Capteurs intégrés dans la canne : ultrasons pour la détection d'obstacles, GPS pour la localisation",
+                        "Retour haptique et sonore pour guider l'utilisateur sans avoir à regarder un écran",
+                        "Application mobile Flutter pour les proches : localisation en temps réel et alertes",
+                        "Backend Python (traitement des données capteurs) et Node.js (API REST & WebSockets)",
+                        "Circuit PCB conçu sur mesure pour intégrer les capteurs dans le manche de la canne",
                     ],
                     wip: false,
                 },
             ];
 
-            // ── MODAL LOGIC ──
-            let currentImgIdx = 0;
-            let currentProject = null;
+            let currentImgIdx = 0,
+                currentProject = null;
 
             function buildGallery(imgs) {
                 const g = document.getElementById("modalGallery");
                 g.innerHTML = "";
-
-                // Slides
                 imgs.forEach((img, i) => {
                     const div = document.createElement("div");
                     div.className =
                         "modal-img-placeholder" + (i === 0 ? " active" : "");
-                    // Use picsum with specific dimensions and seed
                     const el = document.createElement("img");
                     el.src = `https://picsum.photos/seed/${img.seed}/900/360`;
                     el.alt = img.label;
@@ -1830,18 +2430,13 @@
                         if (i === 0) el.style.opacity = "1";
                     };
                     div.appendChild(el);
-
-                    // Label overlay
                     const lbl = document.createElement("div");
                     lbl.style.cssText =
                         "position:absolute;bottom:0;left:0;right:0;padding:.6rem 1rem;background:linear-gradient(transparent,rgba(13,13,13,.6));font-family:var(--code);font-size:.62rem;color:rgba(255,255,255,.75);letter-spacing:.08em;text-transform:uppercase";
                     lbl.textContent = img.label;
                     div.appendChild(lbl);
-
                     g.appendChild(div);
                 });
-
-                // Nav arrows
                 if (imgs.length > 1) {
                     const prev = document.createElement("button");
                     prev.className = "g-prev";
@@ -1851,7 +2446,6 @@
                         changeImg(-1);
                     };
                     g.appendChild(prev);
-
                     const next = document.createElement("button");
                     next.className = "g-next";
                     next.innerHTML = "→";
@@ -1860,8 +2454,6 @@
                         changeImg(1);
                     };
                     g.appendChild(next);
-
-                    // Dots
                     const dots = document.createElement("div");
                     dots.className = "gallery-nav";
                     imgs.forEach((_, i) => {
@@ -1878,33 +2470,31 @@
             }
 
             function changeImg(dir) {
-                const imgs = currentProject.imgs;
-                goToImg((currentImgIdx + dir + imgs.length) % imgs.length);
+                goToImg(
+                    (currentImgIdx + dir + currentProject.imgs.length) %
+                        currentProject.imgs.length,
+                );
             }
 
             function goToImg(idx) {
                 const g = document.getElementById("modalGallery");
-                const slides = g.querySelectorAll(".modal-img-placeholder");
-                const dots = g.querySelectorAll(".g-dot");
-                const imgs = currentProject.imgs;
-
-                // hide old
+                const slides = g.querySelectorAll(".modal-img-placeholder"),
+                    dots = g.querySelectorAll(".g-dot");
                 if (slides[currentImgIdx]) {
-                    const oldImg = slides[currentImgIdx].querySelector("img");
-                    if (oldImg) oldImg.style.opacity = "0";
+                    const o = slides[currentImgIdx].querySelector("img");
+                    if (o) o.style.opacity = "0";
                     slides[currentImgIdx].classList.remove("active");
                     if (dots[currentImgIdx])
                         dots[currentImgIdx].classList.remove("active");
                 }
                 currentImgIdx = idx;
-                // show new
                 if (slides[currentImgIdx]) {
-                    const newImg = slides[currentImgIdx].querySelector("img");
-                    if (newImg) {
-                        if (newImg.complete) newImg.style.opacity = "1";
+                    const n = slides[currentImgIdx].querySelector("img");
+                    if (n) {
+                        if (n.complete) n.style.opacity = "1";
                         else
-                            newImg.onload = () => {
-                                newImg.style.opacity = "1";
+                            n.onload = () => {
+                                n.style.opacity = "1";
                             };
                     }
                     slides[currentImgIdx].classList.add("active");
@@ -1917,36 +2507,20 @@
                 const p = PROJECTS[idx];
                 currentProject = p;
                 currentImgIdx = 0;
-
                 document.getElementById("modalNum").textContent =
                     p.num + " — " + p.type;
                 document.getElementById("modalTitle").textContent = p.title;
-
-                // Tags
-                const meta = document.getElementById("modalMeta");
-                meta.innerHTML = p.tags
+                document.getElementById("modalMeta").innerHTML = p.tags
                     .map((t) => `<span class="modal-tag">${t}</span>`)
                     .join("");
-
-                // Description
                 document.getElementById("modalDesc").innerHTML = p.desc;
-
-                // Features
-                const feat = document.getElementById("modalFeatures");
-                feat.innerHTML = p.features
+                document.getElementById("modalFeatures").innerHTML = p.features
                     .map((f) => `<div class="modal-feature">${f}</div>`)
                     .join("");
-
-                // WIP badge
-                const sb = document.getElementById("modalStatusBlock");
-                sb.innerHTML = p.wip
+                document.getElementById("modalStatusBlock").innerHTML = p.wip
                     ? `<div class="modal-status-wip"><span class="modal-status-wip-dot"></span> Projet en développement actif</div>`
                     : "";
-
-                // Gallery
                 buildGallery(p.imgs);
-
-                // Open
                 document.getElementById("modalOverlay").classList.add("open");
                 document.body.style.overflow = "hidden";
             }
@@ -1958,7 +2532,6 @@
                 document.body.style.overflow = "";
             }
 
-            // Close on Escape
             document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape") closeModal();
             });
